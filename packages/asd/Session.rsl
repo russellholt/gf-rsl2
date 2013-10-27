@@ -1,0 +1,50 @@
+/**
+	<font size=5>Session: the outer limits</font>
+
+	<br>
+	<b>$Id: Session.rsl,v 1.1 1998/11/17 23:02:17 toddm Exp $</b>
+*/
+class Session {
+
+	/** how form objects are dynamically added to a session */
+	Object build(String className, String objectName)
+	{
+		Object x;
+
+		// Only create and build the object if it
+		// does not exist.
+		if (doesNotContain(objectName))
+		{
+			// Create an instance of this class
+			x <- sys.instantiate(className);
+	
+			// add the form to the session
+			add(objectName, x);
+
+			// add the session to the form
+			x.addPrivate("theSession", self);
+			x.objectName := objectName;
+
+			// tell the object to build itself.
+			x.build();
+
+			// give session subclasses the opportunity
+			// to do stuff after it has been built.
+			// this is optional...
+			_postBuild(x, objectName);
+		}
+		else
+			x <- find(objectName);
+		
+		// Tell the object that it is about to be "displayed".
+		x.displayInit();
+
+		return x;
+	}
+	
+	/** abbreviated version of build() */
+	Object build(String classAndObjectName)
+	{
+		return build(classAndObjectName, classAndObjectName);
+	}
+}

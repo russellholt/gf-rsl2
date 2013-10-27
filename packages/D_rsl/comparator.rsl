@@ -1,0 +1,12 @@
+native class comparator {
+
+	native << (String field);
+	native addName(String name);
+	native setNameList(List names);
+	native clearNames();
+
+	native addSubComparator(String className, comparator c);
+
+	native Int compare(Composite l, Composite r);
+}
+

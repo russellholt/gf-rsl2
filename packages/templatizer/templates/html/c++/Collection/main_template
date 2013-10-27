@@ -1,0 +1,277 @@
+/**********************************************************************
+<CLASS_DESCRIPTION>
+
+ <CLASSNAME> is
+     DR_<CLASSNAME>
+     DO_<CLASSNAME>
+     DO_<CLASSNAME>Enumerator
+
+
+ <RCS_ID>
+**********************************************************************/
+
+// <NOTES>
+
+#include "D<SUPERCLASS>.h"
+
+#ifndef _D_<CLASSNAME>_
+#define _D_<CLASSNAME>_
+
+#define _D_<CLASSNAME>_ID <CLASS_ID>
+
+class DO_<CLASSNAME>;
+
+// **********************************************************************
+// class DR_<CLASSNAME> is a DR_<SUPERCLASS>
+// a smart pointer
+// **********************************************************************
+class DR_<CLASSNAME> : public DR_<SUPERCLASS> {
+  public:
+	DR_<CLASSNAME> (D *d=0);
+	DR_<CLASSNAME> (const DRef& ref);
+	virtual ~DR_<CLASSNAME>();
+
+	DO_<CLASSNAME> *safe_get();
+	DO_<CLASSNAME> *safe_set(D* d);
+	DO_<CLASSNAME> *New();
+
+	inline DO_<CLASSNAME> *operator->() { return safe_get(); }
+};
+
+// **********************************************************************
+// DO_<CLASSNAME> is a DO_<SUPERCLASS>
+// the DObject component: the real thing
+// **********************************************************************
+class DO_<CLASSNAME> : public DO_<SUPERCLASS> {
+	RWTValSlist<DRef> thelist;
+	
+public:
+	DO_<CLASSNAME>();
+	DO_<CLASSNAME>(DRef r); // casting constructor
+	virtual ~DO_<CLASSNAME>();
+	
+	// override DO_Object virtual functions
+	void init();
+	void destroy();
+	DRef route(DR_Message m);
+	
+	// DO_Collection virtuals
+	inline DR_void add ( DR_Object o ) { return append(o); }
+	DO_Enumerator *elements();
+
+	// DO_<CLASSNAME> methods
+	DR_void append ( DR_Object o );
+	
+		// Instance variables generated from <CLASSNAME>.rsl
+<DATA_DECL_TEMPLATE>
+
+	// Methods generated from <CLASSNAME>.rsl
+<METHOD_DECL_TEMPLATE>	
+};
+
+
+// **********************************************************************
+// Collection Enumerator
+// * If you derive from an existing collection with well-defined, this
+// class may not be necessary.
+//
+// * All DO_Enumerator subclasses are used through the
+// DR_Enumerator interface class; no DR_<CLASSNAME>Enumerator
+// class should be necessary.
+// **********************************************************************
+class DO_<CLASSNAME>Enumerator : public DO_Enumerator {
+	// enumerator data goes here
+
+public:
+	DO_<CLASSNAME>Enumerator(RWTValSlist<DRef>& l) : iter(l) { }
+	virtual ~DO_<CLASSNAME>Enumerator();
+
+	// superclass virtuals
+	inline BOOLEAN hasMoreElements (  ) { return (BOOLEAN) (iter()); }
+	inline DRef nextElement ( ) { return iter.key(); }
+
+	void init();
+	void destroy();
+	DR_String toString();
+};
+#endif
+
+###FILESEPARATOR###
+// $Id: main_template,v 1.1 1998/11/19 00:48:19 holtrf Exp $
+
+#include "D<CLASSNAME>.h"
+
+// ************************
+// * DR_<CLASSNAME>
+// ************************
+static char rcsid[] = "$Id: main_template,v 1.1 1998/11/19 00:48:19 holtrf Exp $";
+
+// <CLASSNAME>
+#define _hAPPEND 252997733
+#define _hELEMENTS 135454
+
+
+
+DR_<CLASSNAME>::DR_<CLASSNAME>(D *d) : DR_Collection(d)
+{
+
+}
+
+DR_<CLASSNAME>::DR_<CLASSNAME>(const DRef& ref) : DR_Collection(ref)
+{
+
+}
+
+DR_<CLASSNAME>::~DR_<CLASSNAME>()
+{
+
+}
+
+DO_<CLASSNAME>* DR_<CLASSNAME>::safe_get()
+{
+	SAFE_GET(DO_<CLASSNAME>);
+}
+
+DO_<CLASSNAME>* DR_<CLASSNAME>::safe_set(D* d)
+{
+	SAFE_SET(DO_<CLASSNAME>,d);
+}
+
+DO_<CLASSNAME> *DR_<CLASSNAME>::New()
+{
+	// TEMPORARY!
+	return safe_set(new DO_<CLASSNAME>());
+}
+
+// ************************
+// * DO_<CLASSNAME>
+// ************************
+
+DO_<CLASSNAME>::DO_<CLASSNAME>()
+{
+
+}
+
+DO_<CLASSNAME>::~DO_<CLASSNAME>()
+{
+
+}
+
+// init(): the "constructor"
+void DO_<CLASSNAME>::init()
+{
+	// initialize superclass first
+	DO_Object::init();
+
+}
+
+// destroy(): the "destructor"
+void DO_<CLASSNAME>::destroy()
+{
+	thelist.clear();
+
+	// destroy superclass last
+	DO_Object::destroy();
+}
+
+
+
+// ******************************************
+// route()
+//
+// the message-oriented interface.
+// Transforms messages into function calls.
+// ******************************************
+DRef DO_<CLASSNAME>::route(DR_Message m)
+{
+	// until the semantics of route() are nailed down,
+	// its body is commented out in the template text.
+	// for the moment it simply bounces the message
+	// to its superclass.
+/*
+	switch(m.messageCode())
+	{
+		case _hAPPEND:
+			return append( DR_Object(m("o")) );
+		case _hELEMENTS:
+			return elements(  );
+
+<ROUTE_CASE_TEMPLATE>
+
+		default: ;
+	}
+*/
+	return DO_<SUPERCLASS>::route(m);
+}
+
+<METHOD_BODY_TEMPLATE>
+
+/**
+	append
+	In RSL: void append( Object o);
+*/
+DR_void DO_<CLASSNAME>::append( DR_Object o )
+{
+	thelist.append(o);
+	return DR_null;
+}
+
+DO_Enumerator *DO_<CLASSNAME>::elements()
+{
+	return new DO_<CLASSNAME>Enumerator(thelist);
+}
+
+// ************************
+// * DO_<CLASSNAME>Enumerator
+// ************************
+
+// <CLASSNAME>Enumerator
+#define _hHASMOREELEMENTS 84019309
+#define _hNEXTELEMENT 1315399961
+
+// C++ destructor
+// use destroy() for individual object de-construction
+DO_<CLASSNAME>Enumerator::~DO_<CLASSNAME>Enumerator()
+{
+}
+
+// init(): the "constructor"
+void DO_<CLASSNAME>Enumerator::init()
+{
+	// initialize superclass first
+	DO_Enumerator::init();
+<INIT_TEMPLATE>
+}
+
+// destroy(): the "destructor"
+void DO_<CLASSNAME>Enumerator::destroy()
+{
+<DESTROY_TEMPLATE>
+
+	// destroy superclass last
+	DO_Enumerator::destroy();
+}
+
+DR_String DO_<CLASSNAME>Enumerator::toString()
+{
+	return DR_String(DNULL);
+}
+
+// route()
+// it's not yet clear whether the enumerator itself should
+// have route().
+/*
+DRef DO_<CLASSNAME>Enumerator::route(DR_Message m)
+{
+	switch(m.messageID())
+	{
+		case _hHASMOREELEMENTS:
+			return hasMoreElements(  );
+		case _hNEXTELEMENT:
+			return nextElement(  );
+
+		default: ;
+	}
+	return DO_Enumerator::route(m);
+}
+*/

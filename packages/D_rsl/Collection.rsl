@@ -1,0 +1,17 @@
+/** generic interface for a collection of objects */
+native class Collection extends D {
+
+	/** add an object to the collection */
+	native add(Object o);
+	
+	/** collection size */
+	native Int size();
+
+	/** create a new object that shares instance variables with self. */
+	native Object shallowCopy();
+
+	/** create a new object whose instance variables are the deepCopy()ies of
+		each instance variable. */
+	native Object deepCopy();
+}
+

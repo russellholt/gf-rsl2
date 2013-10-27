@@ -1,0 +1,100 @@
+#!/bin/zsh
+# AUTODOC
+
+# Which prototype version of foundation
+#vbeta=gf-2.5a3
+vbeta=gf-2.5a6.1
+
+file=.autodoc_startup.rsl
+cline=.autodoc_cline
+
+
+##################################################
+# Set up environment stuff
+# NOTE! using Russell's prototype Foundation 2.5
+##################################################
+
+
+export GRANITE; GRANITE=/dest/applied/gf2.5/Releases/gf/${vbeta}
+export PROJECT; PROJECT=$GRANITE:$GRANITE/packages
+
+. all-setup >& /dev/null
+
+
+templates=$GRANITE/packages/templatizer/templates/html/
+
+type=$1
+shift
+if [ ! -d ${templates}${type} ]
+then
+	printf "%s is not a known autodoc template set; directory %s not found.\n\n" $type ${templates}${type}
+	printf "Usage: %s kind file1 [file2 ... ]\n\twhere kind is c++ or rsl" $0
+	exit 1
+fi
+
+printf "autodoc build %s, Foundation %s\n" `cat $GRANITE/packages/templatizer/src/build` $vbeta
+printf "Using templates in %s\n\n" $templates
+
+
+#
+# Create the output file
+#
+cat >${file} <<EOF
+import templatizer;
+
+class it {
+	doit() {
+		String tdir <- "${templates}${type}/";
+		templatizer r;
+		List theList <- List {
+EOF
+
+#
+# Add a conversion statement for each class name
+#
+for i in $*
+do
+	cat >>${file} <<EOF
+		"${i}",
+EOF
+
+done
+
+cat >>${file} <<EOF
+		false };
+
+		String clname;
+		foreach s in (theList)
+		{
+			if (s.contains(".rsl")) {
+				clname := s.before(".rsl");
+			}
+			else
+				clname <- s;
+
+			if (clname)
+			{
+				out.print("Converting class ", clname, "...", endl);
+				r.convert(templatePath:tdir, kind:"c++", classname: clname, ".html" );
+			}
+		}
+	}
+}
+EOF
+
+#######################
+# Create a command line
+#######################
+printf "rsl -start it.doit %s " ${file} > $cline
+
+for i in $*
+do
+	printf "%s " $i >> $cline
+done
+
+############################################
+# Do it: execute the command line we built.
+############################################
+
+. $cline
+

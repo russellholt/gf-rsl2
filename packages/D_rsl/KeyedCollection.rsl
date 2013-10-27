@@ -1,0 +1,12 @@
+/**
+	A collection that requires keys to be associated with
+	each element, such as Dictionary.
+*/
+native class KeyedCollection extends Collection {
+
+	/** Add o with a key */
+	native add(String key, Object o);
+
+	/** find the object by key */
+	native Object get(String key);
+}

@@ -1,0 +1,7 @@
+
+native class OStream {
+
+	native String stream(Object o);
+	native String composite(Composite c);
+	native String collection(Composite c);
+}

@@ -1,0 +1,2 @@
+		case <ROUTE_CASE>: // RSL: <DECL_TEXT>
+			return <METHOD_NAME>( <ROUTE_PARAM_LIST> );

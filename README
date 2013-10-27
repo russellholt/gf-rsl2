@@ -1,0 +1,7 @@
+How to make the GF2.5 system
+--- -- ---- --- ----- ------
+1) cd to the granite directory
+2) Determine which compilier to use
+3) makeit set
+	respond with sun, cyg, or gnu
+4) makeit system 

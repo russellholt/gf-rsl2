@@ -1,0 +1,27 @@
+/**
+	Resource Table
+*/
+class Table {
+
+	/** Explicity add a Resource to the table with a key.
+		This can be used to create a table without loading
+		from a file. */
+	add(String key, row);
+	
+	/** Return the row Resource named by key */
+	find(String key);
+	
+	/** Set the delimiter character for use in subsequent
+		loadFile() messages. */
+	setDelimiter(String delim);
+	
+	/** Load the table from given filename. The RSL row class
+		to use is named by the second argument and overrides
+		the name given in the table. */
+	loadFile(String filename, String rowClass);
+
+	/** Load the table from given filename. Use the name
+		given in the table as the row class. */
+	loadFile(String filename);
+
+}

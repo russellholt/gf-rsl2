@@ -1,0 +1,145 @@
+// Server.rsl
+// $Id: Server.rsl,v 1.2 1998/11/23 19:25:40 cking Exp $
+
+
+/**
+	The Server base class. Provides configuration parameters and operations
+	framework for servers and harnesses like the RMG and the web.
+*/
+class Server {
+
+	/** TCP/IP port to listen on */
+	Integer	Port;
+	
+	/** Logfile level */
+	Integer	LogLevel;
+	
+	/** LogWhichSystems */
+	String	LogWhichSystems;
+	
+    /** Flag specifing whether to use a log file 
+        or the standard logf. */
+	Boolean UseFileLog;
+
+    /** If UseFileLog is true, this specifies the 
+    name of the log file to use */
+	String LogFileName;
+ 
+	/** Maximum number of users at any time in the system.
+		When this threshold is reached, sends MaxUserMessage
+		to each additional user. */
+	Integer	MaxUsers;
+	
+	/** Message given to users when the system is "full" (see MaxUsers) */
+	String	MaxUserMessage;
+	
+	/** Maximum number of sessions before the server automatically
+		restarts. Used on the Granite Core side*/
+	Integer	TotalSessionsAllowed;
+	
+	/** Maximum number of requests before the server automatically
+		restarts. Used on the Channel side*/
+	Integer	TotalRequestsAllowed;
+	
+	/** Number of seconds between periodic logging of usage statistics. */
+	Integer	LogStatInterval;
+
+	/** Path to the data file for the Status class */
+	String	StatusMessagesFile;
+	
+	/** ReconfigFile */
+	String	ReconfigFile;
+
+	/** Flag specifing whether to enable cryptography support. */
+	Boolean UseCryptoGraphy;
+
+	/** Default startup configuration routine. Overridden by subclasses. */
+	Init();
+    StartServer();
+    StartServer(Table tblParams);
+
+	/** Register with the timeout manager to write regular
+		statistical log messages with LogPeriodicStatistics() */
+	BeginPeriodicLogging();
+	
+	
+	/** Become a server */
+	Internal_StartServer();
+
+	/** ECI "reconfiguration" interface */
+	SetLogLevel(Integer level);
+	SetLogWhichSystems(String logsys);
+    SetUseFileLog(Boolean bUseLog);
+    SetLogFileName(String strFileName);
+	SetMaxUsers(Integer maxusers);
+	SetMaxUserMessage(String message);
+	SetTotalSessionsAllowed(Integer nSessions);
+	SetTotalRequestsAllowed(Integer nRequests);
+	SetLogStatInterval(Integer seconds);
+	
+	/** Log server statistics in the form <PRE>
+		PERIODIC: A Completed in B min; C now, D top, E total
+		</PRE>
+	*/
+	LogPeriodicStatistics();
+	
+	/** Shut down the server when the number of currently active sessions
+		drops to zero. */
+	ShutdownAtZeroSessions(Boolean b);
+	
+	/** Shutdown the server in the given number of seconds. */
+	Shutdown(Integer seconds);
+	
+	/** Interrupt a currently pending Shutdown() */
+	CancelShutdown();
+	
+	/** Dynamically load RSL classes */
+	ParseRSLFile(String filename,
+			/* unused */ Boolean replaceExisting);
+	
+}
+
+// Init
+// Set defaults
+Server::Init()
+{
+	Port = 0;	// zero means choose any port
+	LogLevel = 6;
+	LogWhichSystems = "abcdefg";
+        UseFileLog = false;
+        LogFileName = "log";
+        UseCryptoGraphy = false;
+
+	StatusMessagesFile = "status_messages";
+
+	MaxUsers = 256;
+
+	TotalSessionsAllowed = 100;
+        TotalRequestsAllowed = 10000;
+
+	LogStatInterval = 3600;
+	ReconfigFile = "reconfig.rsl";
+}
+
+Server::StartServer()
+{
+    Internal_StartServer();    
+}
+
+Server::StartServer(Table tblParams)
+{
+    String sTempPort;
+    sTempPort = tblParams.find("port");
+    if (sTempPort != "")
+    {
+        Port = sTempPort;
+    }
+
+    Internal_StartServer();
+}
+
+Server::BeginPeriodicLogging()
+{
+	TimeoutManager.Register(self, SessionID, LogStatInterval, "LogPeriodicStatistics");
+}
+

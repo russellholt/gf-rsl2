@@ -1,0 +1,25 @@
+/** Status Resource */
+class Status {
+
+/** Configuration */
+	LoadFile(String filename);
+
+/** Assignment */
+	:= (Integer i);
+	:= (Status s);
+	SetNumber(Integer i);
+
+/** Assignment (OBSOLETE) */
+	= (Integer i);
+	= (Status s);
+
+/** Info */
+	Integer Number();
+	Integer Severity();
+	String Tag();
+	String Message();
+	
+/** Comparison */
+	Boolean == (Status s);
+	Boolean == (Integer s);
+}

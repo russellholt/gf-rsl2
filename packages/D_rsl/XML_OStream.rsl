@@ -1,0 +1,6 @@
+
+native class XML_OStream extends OStream {
+
+	native String stream(Object o);
+	native String composite(Composite c);
+}

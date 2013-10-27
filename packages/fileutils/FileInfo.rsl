@@ -1,0 +1,70 @@
+// $Id: FileInfo.rsl,v 1.1 1998/11/17 23:02:47 toddm Exp $
+/**
+	on-disk file information
+*/
+class FileInfo {
+
+	/** name of the file to get information about */
+	setPath(String path);
+
+	/** the current path */
+	String path();
+
+	/** Sets the current path to the current directory */
+	setPathToCurrentDirectory();
+
+	/** Resolve all references and symbolic links
+		like ".", "..", etc in the path set by setPath()
+		to give an absolute pathname */
+	String resolvePath();
+	
+	/** implicit call to setPath(), resolvePath() */
+	String resolvePath(String newPath);
+	
+	/** is this a real file? */
+	Boolean exists();
+	Boolean doesNotExist();
+	
+	/**	shortcut for setPath(newPath);
+		followed by either exists(); or doesNotExist(); */
+	Boolean exists(String newPath);
+	Boolean doesNotExist(String newPath);
+	
+	/** is it a directory? */
+	Boolean isDirectory();
+	
+	/** size in bytes of this file. returns -1 if
+		exists() returns false. */
+	Integer size();
+	
+	/** get and set access control information */
+	permissionInfo permissions();
+	setPermissions(permissionInfo perms);
+
+	/** Using the name specified by setPath(),
+		create a new directory. */
+	Status createDirectory();
+	
+	/** Creates directory if it Does Not Exist */
+	createDirectoryIfDNE();
+
+	/** Returns the full path of the current working directory.
+		Does NOT change the current pathname,
+		NOT Equivalent to resolvePath(".");	*/
+	String currentDirectory();
+
+	/** change current working directory */
+	changeDirectory(String path);
+	
+	/** change current working directory */
+	changeDirectory();
+
+}
+
+/**
+	file permissions. each of owner, group and other
+	are 0-3 character strings like "rwx", "r", "rx", etc.
+*/
+class permissionInfo {
+	String owner, group, other;
+}

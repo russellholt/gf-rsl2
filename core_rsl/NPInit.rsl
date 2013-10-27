@@ -1,0 +1,47 @@
+/**
+ * NPServer Init and StartServer implementations.
+ *
+ * $Id: NPInit.rsl,v 1.1 1998/11/17 23:36:33 toddm Exp $
+ */
+
+import dutil;    // Destiny core utilities package.
+import npcore;   // Named pipe server.
+
+/**
+ * Initialize this NPServer.
+ */
+NPServer::Init ()
+{
+	Shutdown = 0;
+	out.print ("Initializing NPServer...", endl);
+}
+
+/**
+ * Start this NPServer.
+ */
+NPServer::StartServer ()
+{
+    	out.print ("Starting NPServer...", endl);
+	Fifo = "DEFAULT_FIFO";
+	Internal_StartServer ();
+}
+
+/**
+ * Start this NPServer.
+ */
+NPServer::StartServer (Table table)
+{
+    	out.print ("Starting NPServer with params...", endl);
+	String sFifo;
+	sFifo = table.find ("fifo");
+	if (sFifo == "")
+	{
+		Fifo = "DEFAULT_FIFO";
+	}
+	else
+	{
+		Fifo = sFifo;
+	}
+	out.print ("Fifo = ", Fifo, endl);
+	Internal_StartServer ();
+}

@@ -1,0 +1,173 @@
+// ================================================================
+// NAME:    WebInit.rsl
+//
+// PURPOSE: 
+//          Initialization & configuration information for 
+//          Destiny Web server.
+//
+//          See the Destiny document "Technical Reference Manual for
+//          Destiny Financial Gateway" for additional details on the
+//          configuration variables.
+//
+//          The section of this file with the heading 'Begin User
+//          Configuration Area' should be modified by the System
+//          Administrator to tune the Destiny Web server for the
+//          target environment.
+//
+// Copyright 1997 by Destiny Software Corporation 
+// ================================================================
+
+// ***********************************************************************
+// * Destiny RSL packages to be loaded for Web Visa Application project **
+// ***********************************************************************
+import web;                             // Web package
+import dutil;                           // Destiny core utilities package
+
+
+// ***********************************************************************
+// * Global Process (not user session) Variables                        **
+// *                                                                    **
+// * The variables are declared, not initialized or configured, in this **
+// * "global" block.  This block SHOULD NOT BE MODIFIED.                **
+// ***********************************************************************
+global 
+{
+    String      ProtocolType;
+    String      AppsDirPath;
+    DateTime    FileChangeTimeStamp;
+    Integer     MachineId;
+    Integer     VisaAppCounter;
+    String      FileStamp;
+    Log         Log;
+
+    // ***************************************
+    // * FUSA Card table - Used for the web **
+    // ***************************************
+        Table tblFusaCards;
+   
+    // *********************************
+    // * Load the Table resource here **
+    // *********************************
+    tblFusaCards.loadFile("CCard.dat");
+    // made table path relative, need to add config var - JPC 8/27
+
+    FileChangeTimeStamp.Input_Format("%H:%M");
+    FileChangeTimeStamp.Format("%H:%M");
+}
+
+WebServer::Init()
+{
+    out.print("WebServer::Init()", endl);
+
+    // ********************************************************************
+    // *                   BEGIN USER CONFIGURATION AREA                 **
+    // *                                                                 **
+    // * FUSA has a shell script that looks for the begin and end of the **
+    // * configuration area.  The beginning is the start of this Init()  **
+    // * function.  DO NOT put anything else at the start of Init().     **
+    // * The ending of the configuration area is marked by the           **
+    // * LoadTranslationTables().                                        **
+    // ********************************************************************
+
+    // **********************************************************
+    // * Define TCP/IP port to listen for incoming connections **
+    // **********************************************************
+    Port = 0;   
+
+    // *********************************************************************
+    // * Severity threshold below which server messages will be logged.   **
+    // * 6 = debug, 5 = info, 4 = notice, 3 = alert, 2 = error, 1 = fatal **
+    // * 0 = emergency                                                    **
+    // *********************************************************************
+    LogLevel = 6;
+
+    // ***********************************************************
+    // * Server subsystems to log messages.                     **
+    // * a = RMG protocol, b = server, c = session management,  **
+    // * d = major system resources,  e = rsl language system,  **
+    // * f = application rsl scripts, g = protocol traffic only **
+    // ***********************************************************
+    LogWhichSystems = "abcdefg";
+
+    // ************************************************
+    // * Location of file containing status messages **
+    // ************************************************
+    StatusMessagesFile = "./status_messages";
+
+    // *********************************************************************
+    // * Maximum allowed number of concurrent users and the message to be **
+    // * sent to each user when system is "full"                          **
+    // *********************************************************************
+    MaxUsers = 255;
+    MaxUserMessage = "Sorry - the server isn't accepting connections at this time.";
+
+    // *****************************************************************
+    // * Total number of users to be handled by server process before **
+    // * graceful shutdown commences.                                 **
+    // *****************************************************************
+    TotalAppsAllowed = 500;
+
+    // ******************************************************
+    // * Period (in seconds) of a usage statistics message **
+    // ******************************************************
+    LogStatInterval = 3600;
+
+    // **************************************************************************
+    // * Name of dynamic config file to run when signaled by 'rmgadmin' script **
+    // **************************************************************************
+    ReconfigFile = "reconfig.rsl";
+
+    // ********************************************************************
+    // * Specify whether file logging is to be used. (Default is syslog) **
+    // * If file logging is used, specify the log filename prefix.       **
+    // ********************************************************************
+    UseFileLog = true;
+    LogFileName = "weblog";
+
+    // ********************************************************************
+    // * Specify directory path where Visa applications are to be stored **
+    // ********************************************************************
+    AppsDirPath = "./test";
+
+    // *********************************************************************
+    // * Specify directory path where the HTML documents are to be stored **
+    // *********************************************************************
+    DocumentRoot = "./html";
+
+    // ***********************************************
+    // * Specify machine id (ie wilrmg1 or wilrmg2) **
+    // ***********************************************
+    MachineId = 1;  
+
+    // **********************************************************************
+    // * Specify time, in military format HH:MM, when file containing Visa **
+    // * applications is to be closed & a new file started.                **
+    // **********************************************************************
+    FileChangeTimeStamp.Assign("08:40");
+
+    // **************************************************************
+    // **************************************************************
+    // *                  END USER CONFIGURATION AREA              **
+    // **************************************************************
+    // **************************************************************
+
+    StartupClassName = "";
+    ProtocolType = "Web";
+
+    // *******************************************************
+    // * Load the status messages file one time per process **
+    // *******************************************************
+    Status statusID;
+    statusID.LoadFile(StatusMessagesFile);
+}
+
+
+WebServer::StartServer() 
+{
+    out.print("Starting Server...", endl);
+
+    // *****************************
+    // * Start the actual Server. **
+    // *****************************
+    Internal_StartServer();
+}

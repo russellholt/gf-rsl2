@@ -1,0 +1,35 @@
+// RSL2 TimeoutManager Resource
+// $Id: TimeoutManager.rsl,v 1.1 1998/11/17 23:45:48 toddm Exp $
+
+/** 
+	A system manager which allows asynchronous user-defined messages to be
+	sent to any objects based on an activity timeout value. Objects
+	are first registered. To reset the timer, use ResetTimer(). To
+	remove an object from the care of the TimeoutManager, use Remove().
+*/
+class TimeoutManager {
+
+	/** timeout value to be used if one is not given explicitly in a
+		Register() request. */
+	Integer defaultTimeout;
+
+	/** method to be used if one is not given explicitly in a
+		Register() request. */
+	String defaultMethod;
+
+	/** Make the TimeoutManager aware of the given object, in the given session.
+		<code>Session</code> is usually given by the object <b>SessionID</b>.
+		Uses the defalut values for timeout and method name.  */
+	native Register(object, String Session);
+
+	/** Make the TimeoutManager aware of the given object, in the given session.
+		<code>Session</code> is usually given by the object <b>SessionID</b>.
+		Use the given values for timeout and method name. */
+	native Register(object, String Session, Integer timeoutSeconds, String methodName);
+
+	/** Tell the TimeoutManager to reset its timer! */
+	native ResetTimer(object);
+
+	/** Make the TimeoutManager forget about this object. */
+	native Remove(object);	
+}

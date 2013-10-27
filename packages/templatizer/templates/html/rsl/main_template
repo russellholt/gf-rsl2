@@ -1,0 +1,23 @@
+<html>
+<body>
+
+<h1>Class <CLASSNAME></h1>
+
+<BLOCKQUOTE>
+	<b>extends <a href="<SUPERCLASS>.html"><SUPERCLASS></A></b>
+</BLOCKQUOTE>
+
+<p><CLASS_DESCRIPTION></p>
+
+<h3>Instance Variables</h3>
+<BLOCKQUOTE>
+<DATA_DECL_TEMPLATE>
+</BLOCKQUOTE>
+
+<h3>Methods</h3>
+<BLOCKQUOTE>
+<METHOD_DECL_TEMPLATE>
+</BLOCKQUOTE>
+
+</body>
+</html>

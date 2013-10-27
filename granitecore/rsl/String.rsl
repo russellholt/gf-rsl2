@@ -1,0 +1,100 @@
+// String.rsl
+// $Id: String.rsl,v 1.1 1998/11/17 23:51:19 toddm Exp $
+// Copyright (c) 1997 Destiny Software Corporation
+
+
+/** an ordered collection of ASCII characters */
+class String {
+
+	/** assignment */
+	:= (String s);
+	:= (Integer i);
+	:= (Boolean b);
+	:= (o);
+
+	/** assignment (OBSOLETE) */
+	= (String s);
+	= (Integer i);
+	= (Boolean b);
+
+	/** append arguments with possible conversions */
+	String +  (String s);
+	String +  (Integer i);
+	String +  (Boolean b);
+	String += (String s);
+	String += (Integer i);
+	String += (Boolean b);
+	String append(...);
+	
+	/** prepend arguments with possible conversions */
+	String prepend(...);
+	
+	/** element access */
+	String [] (Integer i);
+
+	/** comparison */
+	Boolean == (String s);
+	Boolean == (Integer i);
+	Boolean != (String s);
+	Boolean != (Integer i);
+	Boolean >  (String s);
+	Boolean >  (Integer i);
+	Boolean >= (String s);
+	Boolean >= (Integer i);
+	Boolean <  (String s);
+	Boolean <  (Integer i);
+	Boolean <= (String s);
+	Boolean <= (Integer i);
+
+	/** number of characters */
+	Integer length();
+	
+	/** information about this string */
+	Boolean contains(String s);
+	Boolean containsRegex(String pattern);
+	Boolean matchesRegex(String pattern);
+	Boolean isNumeric();
+	Boolean isCash();
+
+	/** return the substring "before" the argument */
+	String before(String pattern);
+	String before(Integer index);
+	String beforeRegex(String pattern);	
+
+	/** return the substring "after" the argument */
+	String after(String pattern);
+	String after(Integer index);
+	String afterRegex(String pattern);
+
+	/** padding */
+	prePad(String str, Integer finalLength);
+	postPad(String str, Integer finalLength);
+	
+	/** repetition */
+	String *(Integer count);
+	String repeat(Integer count);
+
+	/** remove non-printable characters */
+	stripControl();
+
+	/** remove whitespace */
+	squeeze();
+
+	/** pattern substitution */
+	replace(String pattern, String sub);
+	replaceRegex(String pattern, String sub);
+	
+	/** change case */
+	upcase();
+	downcase();	
+	
+	/** return a List of sub-Strings delimited by the argument */
+	List split(String delim);
+}
+
+global {
+	String endl, endp;
+
+	endl = "\n";
+	endp = "\n\n";
+}

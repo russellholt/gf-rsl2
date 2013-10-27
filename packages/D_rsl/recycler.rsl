@@ -1,0 +1,26 @@
+/**
+	manages object recycling. may create and destroy objects instead
+	depending on circumstances. There should be an instance of this
+	class for every class in the system. Some classes, such as
+	the enumerators, are not recycled but destroyed due to
+	implememntation issues.
+*/
+native class recycler extends D {
+	/** list of free objects */
+	native private List freeList;
+
+	/** list of objects in use */
+	native private List inUse;
+
+	/** class name that we are attached to */
+	native String classname;
+
+	/** gets an object, either from the free list or from spawn() */
+	native Object get();
+
+	/** puts an object on the free list or destroys it */
+	native recycle(Object o);
+
+	/** creates an object of the type we know about */
+	native Object spawn();
+}

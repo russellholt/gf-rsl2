@@ -1,0 +1,7 @@
+native class Class extends D {
+	native String classname;
+	native recycler recycler;
+	
+	native Object New();
+	native Recycle(Object o);
+}

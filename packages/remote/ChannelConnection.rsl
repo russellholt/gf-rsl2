@@ -1,0 +1,22 @@
+/**
+ * An ECI connection to a Channel.
+ *
+ * $Id: ChannelConnection.rsl,v 1.1 1998/11/17 23:09:32 toddm Exp $
+ */
+class ChannelConnection
+{
+    connect (String host, String port);
+}
+
+/**
+ * Establishes an ECI connection to the given channel.
+ *
+ * Params:
+ *    host - the channel host
+ *    port - the channel port
+ */
+ChannelConnection::connect (String host, String port)
+{
+    RemoteConnection rc;
+    rc.connect (host, port);
+}

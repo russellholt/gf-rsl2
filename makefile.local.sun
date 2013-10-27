@@ -1,0 +1,130 @@
+#makefile.local.sun (for /sw/opt/SUNWspro compiler)
+# Sets environment variables, to be included by sub-makefiles.
+#
+# $Id: makefile.local.sun,v 1.2 1998/11/24 21:19:19 toddm Exp $
+# Copyright (c) 1997, Destiny Software Corporation
+
+
+# ********************
+# * various commands *
+# ********************
+CCC = CC -DBOOL
+CC = CC -DBOOL
+LD = ld
+MAKE = gmake
+FLEX = flex
+BISON = bison
+AR = $(CC) -xar -o
+MV = mv -f
+CP = cp -f
+RM = rm -f
+CD = cd
+
+# ******************
+# * Compiler Flags *
+# ******************
+DBG_FLAG = -g
+
+# compiler option to generate position independent code
+FPIC = -PIC
+
+# compiler option to generate shared libraries
+SHARE = -G
+
+# specifes library search dirs to runtime linker
+RPATH = -R
+
+USE_EXCEPTIONS = 
+
+# ************************************
+# * directory trees for installation *
+# ************************************
+TOOLS = /dest/tools
+
+##################
+# SUNWspro version
+##################
+# ************************************************
+# * Location of Rogue Wave Tools.h++ (librwtool) *
+# ************************************************
+# RW_INC = /sw/opt/SUNWspro/SC4.2/include/CC/rw7
+# RWDIR = /sw/opt/SUNWspro/lib/rw7
+
+# link command for Rogue Wave Tools.h++ shared library (.so)
+# RWLIB = -lrwtool
+
+# pathname to Rogue Wave Tools.h++ static library (.a)
+# SRWLIB = -lrwtool.a 
+##################
+
+##################
+# RW version 
+##################
+BUILD=4d
+
+# ******************************************************
+# * Location of Rogue Wave Tools.h++ (libtls<4d | 7d>) *
+# ******************************************************
+RW_INC = /usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/$(BUILD)
+RWDIR = /usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/$(BUILD)/lib
+
+# link command for Rogue Wave Tools.h++ shared library (.so)
+RWLIB = -ltls$(BUILD)
+
+# pathname to Rogue Wave Tools.h++ static library (.a)
+SRWLIB = -ltls$(BUILD)
+
+# ****************************************************************
+# * link command for Rogue Wave DBTools.h++ shared library (.so) *
+# ****************************************************************
+DBLIB = -ldbt$(BUILD)
+
+# link command for Oracle8 shared library (.so)
+ORLIB = -lora$(BUILD) -laio -ldl
+ 
+# link command for Sybase CT shared library (.so)
+SBLIB = -lctl$(BUILD) -lblk -lct -lcs -lcomn -ltcl -ltli -lintl
+ 
+#################
+
+# **********************************
+# * Location of the BSAFE toolkit  *
+# **********************************
+BSAFE_INC = /sw/bsafe40/solar26/library/include
+BSAFE_DIR = /sw/bsafe40/solar26/library/lib
+
+LIBBSAFE = -lbsafe
+
+# ******************************
+# * Location of Socket++ v1.10 *
+# ******************************
+SOCK_INC = /dest/tools/socket++-1.10
+SOCK_DIR = /dest/tools/socket++-1.10
+
+# link command for socket++ library (.so)
+SOCKXXLIB = -lsun-socket++
+
+# pathname to Socket++ static library (.a)
+SSOCKXXLIB = -lsun-socket++.a
+
+# *****************************
+# * Standard socket libraries *
+# *****************************
+LIBSOCKET = -lsocket -lnsl
+
+# **************************
+# * User local include dir *
+# **************************
+LOCAL_INC = /usr/local/include
+
+# ******************************************
+# * location of Purify headers and library *
+# * comment out if not using Purify.       *
+# ******************************************
+#export PURIFY_DIR = `purify -print-home-dir`
+
+.cc.o:
+	$(CC) $(CPPFLAGS) -c $<
+
+
+

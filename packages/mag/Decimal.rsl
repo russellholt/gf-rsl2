@@ -1,0 +1,24 @@
+/**
+When first constructed has a value of 0.
+All operators take a Decimal, String or Int.
+*/
+native class Decimal extends Magnitude {
+native String asMoneyFormat(String);
+native String asPercentageFormat();
+native Decimal +(op);
+native Decimal -(op);
+native Decimal /(op);
+native Decimal *(op);
+
+native Decimal +=(op);
+native Decimal -=(op);
+native Decimal *=(op);
+native Decimal /=(op);
+native Decimal :=(op);
+
+native Bool <(op);
+native Bool >(op);
+native Bool <=(op);
+native Bool >=(op);
+native Bool ==(op);
+}

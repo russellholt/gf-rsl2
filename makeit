@@ -1,0 +1,135 @@
+#!/bin/ksh
+##############################################
+# makeit
+# usage: makeit <action>
+# run makeit from the base directory of the project.
+# valid actions:
+# set		sets the compiler and install directory  
+# clean		removes the objects
+# system	compiles the system
+#
+# the web channel is forced to compile under cygnus
+#
+#############################################
+
+
+#####################################################
+###### check for user error #########################
+#####################################################
+
+if test "$#" -lt 1
+then	
+	echo USAGE: makeit [how to compile] options: set, headers, clean, system 
+	exit
+fi
+
+
+if [ ! $1 = "clean" -a !  $1 = "system" -a ! $1 = "set" -a ! $1 = "headers" ]
+then 
+	echo bad argument
+	echo USAGE: makeit [how to compile] options: set, headers, clean, system	
+	exit
+fi
+
+
+
+#### set up granite link #########################
+
+HowToCompile=$1
+
+if [ -f "COMPILER" ]
+then  
+	export COMPILER=`cat ./COMPILER`
+	OrigCompilerSetting=$COMPILER
+	echo using the $COMPILER compiler
+	echo will set the compile back to $OrigCompilerSetting
+fi
+
+
+
+###############################################
+#### Compile the project 
+#############################################
+how=$HowToCompile
+
+if [ $how = "clean" ]
+then
+    $MAKE clean
+	exit
+fi
+
+if [ $how = "headers" ]
+then
+    $MAKE headers
+	exit
+fi
+
+
+if [ $how = "system" ]
+then
+	echo calling setup
+	. ./setup
+	$MAKE headers
+    $MAKE system
+	echo done 
+
+	echo
+	echo Making NSAPI using cygnus!!
+	export COMPILER=cyg
+    cat > ./COMPILER << EOF
+$COMPILER
+EOF
+	. ./setup
+	cd nsapi
+	$MAKE system
+	cd ..
+	echo
+	echo done
+	
+	echo 
+	echo Setting compiler back to original setting-$OrigCompilerSetting
+	export COMPILER=$OrigCompilerSetting
+    cat > ./COMPILER << EOF
+$COMPILER
+EOF
+	exit
+fi
+
+if [ $how = "set" ]
+then
+    echo What compiler would you like to use? \(cyg, sun or gnu\)
+    read COMPILER
+    cat > ./COMPILER << EOF
+$COMPILER
+EOF
+    echo done.
+	exit
+fi
+
+echo this should not happen.
+exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

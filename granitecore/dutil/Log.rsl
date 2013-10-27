@@ -1,0 +1,33 @@
+// Logging Resource
+// $Id: Log.rsl,v 1.1 1998/11/17 23:45:42 toddm Exp $
+
+/**
+	A simple interface to the log system set up by the Granite Core, through
+	the global object <b>log</b>.<br>
+	Each method will write each of its arguments to the logfile at the given
+	log level. For example, <code>log.debug(...)</code> writes each of its arguments
+	at debug level, indicated by <code>DBG</code> in the logfile.
+*/
+class Log {
+
+	/** level DBG */
+	debug(...);
+
+	/** level INF */
+	info(...);
+
+	/** level NOT */
+	notice(...);
+
+	/** level ALT */
+	alert(...);
+
+	/** level ERR */
+	error(...);
+
+	/** level FTL */
+	fatal(...);
+
+	/** level EMG */
+	emergency(...);
+}

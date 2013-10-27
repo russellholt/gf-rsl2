@@ -1,0 +1,28 @@
+// System Resource
+
+/**
+	A collection of unix system-related functions, to be used from
+	the global object <b>system</b>, and for backward compatiblity
+	with RSL1, the object <b>out</b>, as in <code>out.print()</code>
+*/
+class System {
+
+	/** Return a String with today's date in the form MM/DD/YYYY */
+	String date();	// today's date
+
+	/** Return a String with the current time in the form as
+		given by the unix system call asctime(), for example
+		"Fri Sep 13 00:00:00 1986".  */
+	String time();	// current time
+
+	/** Unix process ID */
+	Integer ProcID();	// process ID
+
+	/** print arguments to the server process's standard out.
+		Mostly used with the global object <b>out</b>,
+		eg <code>out.print()</code> */
+	print(...);
+}
+
+global System out;
+global System system;

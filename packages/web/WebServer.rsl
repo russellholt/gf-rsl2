@@ -1,0 +1,26 @@
+//
+// WebServer
+//
+// method WebServer::Init() is the configuration routine
+// and must be supplied for each project, most likely in
+// the file WebInit.rsl
+//
+// $Id: WebServer.rsl,v 1.2 1998/12/22 15:14:14 cking Exp $
+
+class WebServer extends Server {
+// data
+	String StartupClassName;
+	String DocumentRoot;
+	String DocumentExt;
+	Integer GraniteCorePortStart;
+	Integer GraniteCorePortEnd;
+	String RegAddr;           // Registrar's host and port
+	Integer CoreReceiveTimeOut;
+	Integer WebServerReceiveTimeOut;
+
+// methods
+	Init();
+	StartServer();
+	StartServer(Table tblParams);
+}
+

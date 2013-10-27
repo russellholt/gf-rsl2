@@ -1,0 +1,51 @@
+#!/bin/ksh
+##############################################
+# packagemake
+# usage: packagemake <action>
+# run packagemake from the package directory of the project.
+# valid actions:
+# clean     removes the objects
+# system    compiles the system
+# static	compiles static libs of the system
+#
+#############################################
+ 
+ 
+#####################################################
+###### check for user error #########################
+#####################################################
+ 
+if test "$#" -lt 1
+then
+    echo USAGE: packagemake [how] options: clean, system, static
+    exit
+fi
+		 
+		 
+if [ ! $1 = "clean" -a !  $1 = "system" -a !  $1 = "static" ]
+then
+    echo bad argument
+    echo USAGE: packagemake [how] options: clean, system, static
+    exit
+fi
+					 
+how=$1
+					 
+					
+startdir=$GRANITE/packages
+
+for x in `ls .`
+do
+	cd $startdir
+	if [ -d $x ]
+	then
+		cd $x
+		if [ -d src ]
+		then
+			cd src
+		fi
+		printf "%s in directory %s\n" $MAKE `pwd`
+		$MAKE $how
+	fi
+done
+

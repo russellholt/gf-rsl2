@@ -1,0 +1,25 @@
+/** Boolean Resource */
+class Boolean {
+
+	/** Assignment */
+	Boolean :=(Boolean b);
+
+	/** Assignment (OBSOLETE) */
+	Boolean =(Boolean b);
+
+	/** Comparison */
+	Boolean &&(Boolean b);
+	Boolean ||(Boolean b);
+	Boolean !=(Boolean b);
+	Boolean ==(Boolean b);
+
+	/** Assignment with conversion */
+	Boolean :=(String s);
+	Boolean :=(Integer i);
+
+	/** Assignment with Conversion (OBSOLETE) */
+	Boolean =(String s);
+	Boolean =(Integer i);
+
+	String text();			// Convert to String
+}

@@ -1,0 +1,50 @@
+// ================================================================
+// NAME:    rmgform.rsl
+//
+// PURPOSE: 
+//          Base Form class from which all AOL forms "inherit".
+//
+// $Id: RMGForm.rsl,v 1.1 1998/11/17 23:02:09 toddm Exp $
+//
+// Copyright 1997 by Destiny Software Corporation 
+// ================================================================
+
+class RMGForm extends Form
+{
+	Integer InstanceID;
+	Boolean isOpen;
+	Boolean UseLocalCloseWindow;
+	SetInstanceID();
+	IncomingError(String type, String item);
+}
+
+// *****************************************************************
+// *                                                
+// *  Method:   SetInstanceID
+// *                                              
+// *  Purpose:  Each AOL form is assigned a unique ID.
+// *            NextInstanceID is a global variable used for 
+// *            remembering IDs.
+// *                                                
+// *****************************************************************
+
+RMGForm::SetInstanceID()
+{
+    Log.debug("RMGForm::SetInstanceID() ==> ", NextInstanceID, endl);
+    InstanceID = NextInstanceID;
+    NextInstanceID += 1;
+}
+
+// *****************************************************************
+// *                                                
+// *  Method:   IncomingError
+// *                                              
+// *  Purpose:  Logs an error if an error occurred in processing
+// *		AOL RMG command for this form.
+// *                                                
+// *****************************************************************
+
+RMGForm::IncomingError(String type, String item)
+{
+    Log.debug("RMGForm: IncommingError(). ErrType: ", type, " ErrItem: ", item, endl);
+}

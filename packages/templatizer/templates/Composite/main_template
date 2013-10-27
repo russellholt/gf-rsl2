@@ -1,0 +1,248 @@
+/************************************************************************
+<CLASS_DESCRIPTION>
+
+<CLASSNAME> is
+	DR_<CLASSNAME> - the "smart pointer" reference to the implementation
+	DO_<CLASSNAME> - the implementation
+
+  and probably
+	DOC_<CLASSNAME> - class object (referred to through DR_Class)
+
+
+<RCS_ID>
+************************************************************************/
+
+// Translation Notes: (delete if desired)
+// <NOTES>
+
+#include "D<SUPERCLASS>.h"
+
+#ifndef _D_<CLASSNAME>_
+#define _D_<CLASSNAME>_
+
+#define _D_<CLASSNAME>_ID <CLASS_ID>
+
+class DO_<CLASSNAME>;
+
+// a DR_Object:DRef class - a strongly-typed smart pointer
+class DR_<CLASSNAME> : public DR_<SUPERCLASS> {
+public:
+	DR_<CLASSNAME> (D *d=0);
+	DR_<CLASSNAME> (const DRef& ref);
+	virtual ~DR_<CLASSNAME>();
+
+	DO_<CLASSNAME> *const_get() const;
+	DO_<CLASSNAME> *safe_get();
+	DO_<CLASSNAME> *safe_set(D* d);
+	DO_<CLASSNAME> *New();
+
+	inline DO_<CLASSNAME> *operator->() { return safe_get(); }
+};
+
+// a DO_Object class - the guts
+class DO_<CLASSNAME> : public DO_<SUPERCLASS> {
+	// Instance variables generated from <CLASSNAME>.rsl
+<DATA_DECL_TEMPLATE>
+
+public:
+	DO_<CLASSNAME>();
+	DO_<CLASSNAME>(DRef r); // casting constructor
+	virtual ~DO_<CLASSNAME>();
+
+	static DR_Class <CLASSNAME>class;
+	static DR_<CLASSNAME> New();
+	DR_Class DClass();
+
+	DRef route(DR_Message m);
+	void init();
+	void destroy();
+
+	// Methods generated from <CLASSNAME>.rsl
+<METHOD_DECL_TEMPLATE>
+};
+	
+#endif
+
+###FILESEPARATOR###
+#include "D<CLASSNAME>.h"
+
+static char rcsid[] = "<RCS_ID>";
+
+// ************************
+// * DR_<CLASSNAME>
+// ************************
+
+<CASE_DEF_TEMPLATE>
+
+DR_<CLASSNAME>::DR_<CLASSNAME>(D *d) : DR_<SUPERCLASS>(d)
+{
+
+}
+
+DR_<CLASSNAME>::DR_<CLASSNAME>(const DRef& ref) : DR_<SUPERCLASS>(ref)
+{
+
+}
+
+// If you redefine dump() or Recycle(), you must
+// call dump() from this destructor because DRef::dump(), invoked
+// from DRef::~DRef(), may call Recycle() - and destructors do not
+// call functions in derived classes. otherwise, don't call it.
+DR_<CLASSNAME>::~DR_<CLASSNAME>()
+{
+
+}
+
+// const_get()
+// get the object as the correct type, but without the potential
+// to modify it if it is null.
+DO_<CLASSNAME>* DR_<CLASSNAME>::const_get() const
+{
+	return dynamic_cast<DO_<CLASSNAME> *> (unsafe_get());
+}
+
+// safe_get()
+// this method is how operator->() is implemented; 
+// the purpose is to get the object, correctly typed,
+// in a way that can be directly dereferenced witout checking.
+// Because it is possible for the object to be null, safe_get()
+// will create it by calling New(). This is the correct behavior
+// 99% of the time. If it is not, use either const_get() or
+// look in D_macros.h to find the actual code. It's possible that
+// throwing an exception is more appropriate in some cases instead
+// of creating a new object.
+//
+// Note that this is not a virtual function.
+DO_<CLASSNAME>* DR_<CLASSNAME>::safe_get()
+{
+	SAFE_GET(DO_<CLASSNAME>);	// defined in D_macros.h
+}
+
+// rarely used.
+// replace() when safe_get() will be used avoids double checking.
+DO_<CLASSNAME>* DR_<CLASSNAME>::safe_set(D* d)
+{
+	SAFE_SET(DO_<CLASSNAME>,d);	// defined in D_macros.h
+}
+
+DO_<CLASSNAME> *DR_<CLASSNAME>::New()
+{
+	DO_<CLASSNAME> *dobj = DO_<CLASSNAME>::New().const_get();
+	replace(dobj);
+
+	return dobj;
+}
+
+// ************************
+// * DO_<CLASSNAME>
+// ************************
+
+// C++ constructor
+// use init() for individual object initialization
+DO_<CLASSNAME>::DO_<CLASSNAME>()
+{
+
+}
+
+// C++ destructor
+// use destroy() for individual object de-construction
+DO_<CLASSNAME>::~DO_<CLASSNAME>()
+{
+}
+
+// init(): the "constructor"
+void DO_<CLASSNAME>::init()
+{
+	// must initialize superclass *first*
+	DO_<SUPERCLASS>::init();
+
+
+<INIT_TEMPLATE>
+}
+
+// destroy(): the "destructor"
+void DO_<CLASSNAME>::destroy()
+{
+<DESTROY_TEMPLATE>
+
+	// must destroy superclass *last*
+	DO_<SUPERCLASS>::destroy();
+}
+
+// ********************************************************
+
+// DOC_<CLASSNAME>: the <CLASSNAME> class class
+// By defining this class in the .cc file, it is
+// unavailable anywhere else. This is good, for now.
+class DOC_<CLASSNAME> : public DO_Class {
+	D *spawn();
+
+  public:
+	DOC_<CLASSNAME>() : DO_Class("<CLASSNAME>") { }
+
+};
+
+DR_Class DO_<CLASSNAME>::<CLASSNAME>class = new DOC_<CLASSNAME>();
+
+// spawn()
+// The only place DO_<CLASSNAME> objects should be created.
+// This function is private; it is called from DO_Class::New().
+D *DOC_<CLASSNAME>::spawn()
+{
+	return new DO_<CLASSNAME>();
+}
+
+DR_Class DO_<CLASSNAME>::DClass()
+{
+	return <CLASSNAME>class;
+}
+
+// New()
+// Create a new DO_<CLASSNAME> by asking for one from
+// the static class object, DO_<CLASSNAME>::<CLASSNAME>class.
+// That object will either create one, by calling the virtual
+// function spawn(), that is, DOC_<CLASSNAME>::spawn(),
+// or getting one from its list of free objects.
+//
+// A static function
+DR_<CLASSNAME> DO_<CLASSNAME>::New()
+{
+	return DO_<CLASSNAME>::<CLASSNAME>class->New();
+}
+
+// Create_DOC_<CLASSNAME>()
+// not currently in use as of Oct 1, 1998
+// It will be used as the "bootstrap" function
+// to create the class object, which will in turn
+// create and recycle instances of DO_<CLASSNAME>
+extern "C" DRef& Create_DOC_<CLASSNAME>()
+{
+	DO_<CLASSNAME>::<CLASSNAME>class = new DOC_<CLASSNAME>();
+	return DO_<CLASSNAME>::<CLASSNAME>class;
+}
+
+
+// ********************************************************
+
+
+
+// ******************************************
+// route()
+//
+// the message-oriented interface.
+// Transforms messages into function calls.
+// ******************************************
+DRef DO_<CLASSNAME>::route(DR_Message m)
+{
+	switch(theIDHash(m->message->data()))
+	{
+<ROUTE_CASE_TEMPLATE>
+
+		default: ;
+	}
+	return DO_<SUPERCLASS>::route(m);
+}
+
+
+
+<METHOD_BODY_TEMPLATE>

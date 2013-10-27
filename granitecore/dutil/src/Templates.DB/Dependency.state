@@ -1,0 +1,235 @@
+#.VER "2.0"
+#.DECLARE %1"R_TimeoutManager.o": %2"R_TimeoutManager.cc"
+#.DECLARE %3"1XF1s9hdd@IM": %4"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/xphset.h"
+#.DECLARE %5"a@aKlCTckzLE": %6"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/xphasht.h"
+#.DECLARE %7"SiwFe47NphZd": 6 
+#.DECLARE %8"XU4tlX2NSWvM": 4 
+#.DECLARE %9"GuZVYBsgF5Gt": %10"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/xvslist.h"
+#.DECLARE %11"oBuIu9tabxB_": %12"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/tislist.h"
+#.DECLARE %13"v3uWGktcTkCy": 4 
+#.DECLARE %14"8922plHqukUw": 4 
+#.DECLARE %15"dTWvIlm9MduN": 4 
+#.DECLARE %16"tB6isx5EFQe6": 4 
+#.DECLARE %17"QgJMjKMIULp0": 4 
+#.DECLARE %18"1M3UF_P4fJr1": 4 
+#.DECLARE %19"xualiBeNsnCY": 4 
+#.DECLARE %20"SSp5MEKsCYTB": 4 
+#.DECLARE %21"CUaVNjmRejXI": 6 
+#.DECLARE %22"eBKwxe_HjL6Y": 6 
+#.DECLARE %23"LYUBLRol8MV1": 6 
+#.DECLARE %24"uSnNHuX7dXFH": 6 
+#.DECLARE %25"9NOvPJCgG121": 6 
+#.DECLARE %26"OrAePw3kKdhQ": 6 
+#.DECLARE %27"oQNlC0Zn4iyM": 6 
+#.DECLARE %28"12l4OZkRZJ4G": 6 
+#.DECLARE %29"g3Bcb9Wbj9A5": 6 
+#.DECLARE %30"JMTcwRmhrKMD": 6 
+#.DECLARE %31"5zZXdTyuxMUU": 6 
+#.DECLARE %32"HKFl9dq9meEm": 6 
+#.DECLARE %33"QVQEl1WkLsQd": 6 
+#.DECLARE %34"Kdj9qWEb0kg9": 6 
+#.DECLARE %35"KloGi1gdSiCy": %36"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/xpslist.h"
+#.DECLARE %37"d1h_wjFSbdU1": 36 
+#.DECLARE %38"4o1W1s6ttcjA": 36 
+#.DECLARE %39"E0WEDg4R5KIf": 12 
+#.DECLARE %40"FFbZogLIpoG4": 36 
+#.DECLARE %41"EfY4mHbj4ZpT": 36 
+#.DECLARE %42"XuIIzxHwBT0D": 36 
+#.DECLARE %43"5TEZdufD0MlR": 36 
+#.DECLARE %44"ZQUt03zhgZWR": 36 
+#.DECLARE %45"eV@xDFsTPuGj": 36 
+#.DECLARE %46"FyaJ5uEs9c7p": 6 
+#.DECLARE %47"BiwYyc9wlLkB": 6 
+#.DECLARE %48"z9NF2S7RZ0uX": 6 
+#.DECLARE %49"ltpg1pSWKQL@": 6 
+#.DECLARE %50"jZxcMpQnmowY": 36 
+#.DECLARE %51"8fDKb8X5UHTc": 36 
+#.DECLARE %52"StatMessages.o": %53"StatMessages.cc"
+#.DECLARE %54"EM_lABAFyD8O": %55"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/xvhdict.h"
+#.DECLARE %56"NkruSs7OF27q": 55 
+#.DECLARE %57"Pk@uk_sRn7bQ": 55 
+#.DECLARE %58"YPSHyks53SQI": 55 
+#.DECLARE %59"735gefwjYpwB": 55 
+#.DECLARE %60"baVzqSBRoM9f": 12 
+#.DECLARE %61"Csr4ONOTjOQB": %62"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/tvsldict.h"
+#.DECLARE %63"rFcq0@GgGCLP": 62 
+#.DECLARE %64"YWhu886pcnX2": %65"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/tasslnk.h"
+#.DECLARE %66"Z9Dh8lvVu3bt": 12 
+#.DECLARE %67"Apo5cFFdp_4p": 62 
+#.DECLARE %68"OHWUF@yjSb3c": 55 
+#.DECLARE %69"rw_utils.o": %70"rw_utils.cc"
+#.DECLARE %71"Z_XjCiaU8z54": 10 
+#.DECLARE %72"DirContents.o": %73"DirContents.cc"
+#.DECLARE %74"w0JnqB7eD7Oh": 36 
+#.DECLARE %75"kvGWn6qgrw8_": 10 
+#.DECLARE %76"aXXmiV@_Tafj": 12 
+#.DECLARE %77"ZvyxhbQ0dWqk": 10 
+#.DECLARE %78"R_DateTime.o": %79"R_DateTime.cc"
+#.DECLARE %80"xQL4e0Kx6O1M": 12 
+#.DECLARE %81"R_File.o": %82"R_File.cc"
+#.DECLARE %83"lYKOx_nJyRJr": 10 
+#.DECLARE %84"R_Log.o": %85"R_Log.cc"
+#.DECLARE %86"R_Table.o": %87"R_Table.cc"
+#.DECLARE %88"bFTYBMHk5sQl": 6 
+#.DECLARE %89"m4TAuNnnBsoa": 10 
+#.DECLARE %90"Ovrha4Zgazzk": 10 
+#.DECLARE %91"esoYEw1ua8TX": 36 
+#.OPTIONS 1 : %92"-I. -I/dest/applied/gf2.5/gf/granite/granitecore/include -I/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d -I/usr/local/include -I/dest/applied/gf2.5/gf/granite/D -c  -PIC  -g  -DBOOL"
+#.OPTIONS 52 : 92 
+#.OPTIONS 69 : 92 
+#.OPTIONS 72 : 92 
+#.OPTIONS 78 : 92 
+#.OPTIONS 81 : 92 
+#.OPTIONS 84 : 92 
+#.OPTIONS 86 : 92 
+#.DEPEND 3 : %93"/dest/applied/gf2.5/gf/granite/granitecore/dutil/src/R_TimeoutManager.h"%94,"destiny.h"%95,"drwcstring.h"%96,"slog.h"%97,"timeout_manager.h"%98"/dest/applied/gf2.5/gf/granite/granitecore/include/R_Integer.h"%99,"Resource.h"%100,"b.h"%101,"destiny.h"%102,"evtstat.h"%103,"res_class.h"%104,"res_param.h"%105,"rsldefaults.h"%106"/sw/opt/SUNWspro/SC4.2/include/CC/fstream.h"%107,"generic.h"%108,"iomanip.h"%109,"iostream.h"%110,"rlocks.h"%111,"stdiostream.h"%112,"stream.h"%113"/usr/include/stdarg.h"%114,"stddef.h"%115,"stdio.h"%116,"string.h"%117"/usr/include/sys/feature_tests.h"%118,"isa_defs.h"%119,"machsig.h"%120,"machtypes.h"%121,"select.h"%122,"siginfo.h"%123,"stat.h"%124,"time.h"%125,"types.h"%126"/usr/include/time.h"%127"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/compiler.h"%128,"cstring.h"%129,"ctoken.h"%130,"defs.h"%131,"edefs.h"%132,"generic.h"%133,"islist.h"%134,"mempool.h"%135,"message.h"%136,"pvector.h"%137,"ref.h"%138,"regexp.h"%139,"rwalloc.h"%140,"rwerr.h"%141,"strmshft.h"65%142,"thashfun.h"12%143,"tooldefs.h"%144,"toolerr.h"%145,"tphdict.h"%146,"tphset.h"%147,"tpordvec.h"%148,"tpsldict.h"%149,"tpslist.h"%150,"tpvector.h"%151,"tvhdict.h"%152,"tvhset.h"62%153,"tvslist.h"6%154,"xphdict.h"%155,"xphset.cc"4%156,"xpordvec.h"36%157,"xvhasht.h"55%158,"xvhset.h"10
+#.DEPEND 5 : *64%159,"xphasht.cc"6*9
+#.DEPEND 7 : *67 4*6
+#.DEPEND 8 : *64 6*1 155*7
+#.DEPEND 9 : *20%160"/usr/include/assert.h"113*13%161"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/colclass.h"%162,"collect.h"127*4%163,"epersist.h"132%164,"gvector.h"%165,"hashtab.h"133%166,"iterator.h"134*4%167,"rstream.h"139*1%168,"rwfile.h"%169,"rwset.h"%170,"rwstore.h"%171,"stringid.h"141*15%172,"vstream.h"159*9%173,"xvslist.cc"10
+#.DEPEND 11 : *63%174,"tislist.cc"12*25
+#.DEPEND 13 : *20 113*13 127*4 132 133 134*4 139*1 141*2 12*12 6*8 10
+#.DEPEND 14 : *74
+#.DEPEND 15 : *74
+#.DEPEND 16 : *74
+#.DEPEND 17 : *74
+#.DEPEND 18 : *74
+#.DEPEND 19 : *74
+#.DEPEND 20 : *66 4*6
+#.DEPEND 21 : *64 159*9
+#.DEPEND 22 : *74
+#.DEPEND 23 : *74
+#.DEPEND 24 : *74
+#.DEPEND 25 : *74
+#.DEPEND 26 : *74
+#.DEPEND 27 : *20 160*14 161*6 163*1 164*2 166*5 167*2 168*6 174*13 172*3 155*6 173*1
+#.DEPEND 28 : *20 113*13 127*4 132 133 134*4 139*1 141*2 12*12 159*2 4*5 10
+#.DEPEND 29 : *20 160*14 161*6 163*1 164*2 166*5 167*2 168*19 172*3 155*6 173*1
+#.DEPEND 30 : *20 113*13 127*4 132 133 134*4 139*1 141*15 159*2 4*5 10
+#.DEPEND 31 : *74
+#.DEPEND 32 : *74
+#.DEPEND 33 : *74
+#.DEPEND 34 : *64 6*8
+#.DEPEND 35 : *20 160*14 161*6 163*1 164*2 166*5 167*2 168*6 174*13 172*3 155*2%175,"xpslist.cc"36*3 173*1
+#.DEPEND 37 : *63 12*19 36*5
+#.DEPEND 38 : *20 113*13 127*4 132 133 134*4 139*1 141*15 6*1 4*1 175*4 10
+#.DEPEND 39 : *20 160*14 161*6 163*1 164*2 166*5 167*2 168*6 174*13 172*3 155*2 36*3 173*1
+#.DEPEND 40 : *20 113*13 127*4 132 133 134*4 139*1 141*2 12*12 6*1 4*1 175*4 10
+#.DEPEND 41 : *74
+#.DEPEND 42 : *20 160*14 161*6 163*1 164*2 166*5 167*2 168*6 174*13 172*3 155*2 36*3 173*1
+#.DEPEND 43 : *20 113*13 127*4 132 133 134*4 139*1 141*2 12*12 6*1 4*1 175*4 10
+#.DEPEND 44 : *74
+#.DEPEND 45 : *74
+#.DEPEND 46 : *64 159*4 36*4
+#.DEPEND 47 : *74
+#.DEPEND 48 : *74
+#.DEPEND 49 : *74
+#.DEPEND 50 : *64 6*3 175*5
+#.DEPEND 51 : *64 159*2 155*2 36*4
+#.DEPEND 54 : %176"/dest/applied/gf2.5/gf/granite/granitecore/dutil/src/StatMessages.h"95%177,"rw_utils.h"106*6 114*1%178,"stdlib.h"116*1 127*7 136*3 141*4 150*1 62*1%179,"xvhdict.cc"55 10
+#.DEPEND 56 : *39
+#.DEPEND 57 : *39
+#.DEPEND 58 : *39
+#.DEPEND 59 : *39
+#.DEPEND 60 : *30 174*9
+#.DEPEND 61 : *35%180,"tvsldict.cc"62*4
+#.DEPEND 63 : *30 12*6 55*1
+#.DEPEND 64 : *28%181,"tasslnk.cc"65*1 174*7 179*2
+#.DEPEND 66 : *28 65*6 62*4
+#.DEPEND 67 : *30 12*3 180*2 55*1
+#.DEPEND 68 : *34 62*1 179*2
+#.DEPEND 71 : 177*2 109*1 160 114*1 116*1 161*3 130*1 163*1 164*2 166*1 135 137 167*1 140 168*4 12*1 144 153 172 173*1
+#.DEPEND 74 : %182"/dest/applied/gf2.5/gf/granite/granitecore/dutil/src/DirContents.h"177*5%183,"dirent.h"114*1 178*1%184"/usr/include/sys/dirent.h"117 118*4 124*2 161*3 129*22 149 153*1 175*1 10
+#.DEPEND 75 : *54 173*1
+#.DEPEND 76 : *46 174*10
+#.DEPEND 77 : *6 183*1 178*11 127*4 132 133 134 137 139 141 12*1 149*1 36*2
+#.DEPEND 80 : %185"/dest/applied/gf2.5/gf/granite/D/D.h"%186,"DAtom.h"%187,"DMessage.h"%188,"DO_Object.h"%189,"DR_Object.h"%190,"DRef.h"%191,"DString.h"%192,"D_macros.h"%193,"Dcommon.h"%194"/dest/applied/gf2.5/gf/granite/granitecore/dutil/src/R_DateTime.h"%195,"ResStream.h"94%196"/dest/applied/gf2.5/gf/granite/granitecore/include/DirContents.h"%197,"R_Boolean.h"98%198,"R_String.h"99%199,"SharedLibrary.h"%200,"StringPair.h"100*1%201,"drwcstring.h"102%202,"lexer_context.h"103*1%203,"rslEvents.h"%204,"rslMethod.h"%205,"runtime.h"%206,"rw_utils.h"106*3%207"/usr/include/ctype.h"183%208,"dlfcn.h"%209,"libintl.h"%210,"locale.h"114 115*12%211"/usr/local/include/FlexLexer.h"127*6%212,"locale.h"134 135 136*1 138*1%213,"rwdate.h"140%214,"rwtime.h"141 65*1 174*2 144 145*4 150*1 152*2 6*1 4*2 157*1 158*1%215,"zone.h"
+#.DEPEND 83 : *9%216"/dest/applied/gf2.5/gf/granite/granitecore/dutil/src/R_File.h"94 95 96 196*1%217,"R_List.h"198*16 108*2 111*1 160*2 113*2 116*11 161*6 163*1 164*2 166*5 167*1 140 168*6 12*12 172 6*7 173*1
+#.DEPEND 88 : *9%218"/dest/applied/gf2.5/gf/granite/granitecore/dutil/src/R_Table.h"94*1 177 96*1 98*13 105 205*8 183*4 178*12 127*4 132 133 134*4 139*1 141*15 159*8 10
+#.DEPEND 89 : *39 160*18 161*6 163*1 164*2 166*5 167*2 168*19 172 159*8 173*1
+#.DEPEND 90 : *39 183*17 127*4 132 133 134*4 139*1 141*15 6*9
+#.DEPEND 91 : *87 159*8 10
+#.TEMPLATE 3 : 28 18 38 43 31 14 25 47 21 39 41 40 46 32 30 34 35 23 26 33 17 20 8 42 44 37 15 22 45 29 49 27 16 24 13 19 48
+#.TEMPLATE 8 : 38 35 33 37
+#.TEMPLATE 13 : 47 46 49 48
+#.TEMPLATE 14 : *4
+#.TEMPLATE 15 : 28*2 43*1 25*1 21*4 32*3 23*2 17*1 42*2 22*3 27*2 19*1
+#.TEMPLATE 16 : *29 24*2
+#.TEMPLATE 17 : *1 38 47 46 35 49 48
+#.TEMPLATE 18 : 
+#.TEMPLATE 19 : 
+#.TEMPLATE 20 : 
+#.TEMPLATE 22 : *2 43*2 39*2 32*3 23*2 42*2 45*1 27*1
+#.TEMPLATE 5 : 51
+#.TEMPLATE 51 : 
+#.TEMPLATE 7 : 50
+#.TEMPLATE 50 : 
+#.TEMPLATE 33 : 38 35 37
+#.TEMPLATE 46 : 49
+#.TEMPLATE 47 : 48
+#.TEMPLATE 23 : 39
+#.TEMPLATE 28 : 38*1
+#.TEMPLATE 21 : 28*1 43*9 23*5 22*4
+#.TEMPLATE 49 : 
+#.TEMPLATE 24 : *12 26*4 45*2
+#.TEMPLATE 25 : 44 45
+#.TEMPLATE 26 : 43
+#.TEMPLATE 27 : 39 42
+#.TEMPLATE 29 : 37
+#.TEMPLATE 30 : 41
+#.TEMPLATE 31 : 40
+#.TEMPLATE 32 : 39
+#.TEMPLATE 34 : 
+#.TEMPLATE 39 : 
+#.TEMPLATE 44 : 45
+#.TEMPLATE 43 : 
+#.TEMPLATE 42 : 
+#.TEMPLATE 35 : 38
+#.TEMPLATE 37 : 
+#.TEMPLATE 41 : 
+#.TEMPLATE 40 : 
+#.TEMPLATE 38 : 
+#.TEMPLATE 45 : 
+#.TEMPLATE 48 : 
+#.TEMPLATE 1 : 28 18 3 38*2 14 51 25 47 21*1 41*1 46 9 32*3 23*2 17*1 7 8*2 5 37 15*3 50 49 11 27 16*1 13 80 19*1
+#.BUILD "R_TimeoutManager.o" : "/dest/applied/gf2.5/gf/granite/granitecore/dutil/src" "R_TimeoutManager.cc"
+#.TEMPLATE 80 : 
+#.TEMPLATE 11 : 
+#.TEMPLATE 9 : 
+#.TEMPLATE 56 : 68
+#.TEMPLATE 68 : 
+#.TEMPLATE 57 : 67
+#.TEMPLATE 67 : 
+#.TEMPLATE 58 : 59 61 64 66 63
+#.TEMPLATE 66 : 
+#.TEMPLATE 59 : 61*1 63
+#.TEMPLATE 61 : 64*1
+#.TEMPLATE 63 : 
+#.TEMPLATE 64 : 
+#.TEMPLATE 52 : 59 67 61 54 56 68 57 58 64 66 60 63
+#.BUILD "StatMessages.o" : "/dest/applied/gf2.5/gf/granite/granitecore/dutil/src" "StatMessages.cc"
+#.TEMPLATE 60 : 
+#.TEMPLATE 54 : 
+#.TEMPLATE 69 : 71
+#.BUILD "rw_utils.o" : "/dest/applied/gf2.5/gf/granite/granitecore/dutil/src" "rw_utils.cc"
+#.TEMPLATE 71 : 
+#.TEMPLATE 75 : 77
+#.TEMPLATE 77 : 
+#.TEMPLATE 72 : 71 77 76 60 75 74
+#.BUILD "DirContents.o" : "/dest/applied/gf2.5/gf/granite/granitecore/dutil/src" "DirContents.cc"
+#.TEMPLATE 76 : 
+#.TEMPLATE 74 : 
+#.TEMPLATE 78 : 80
+#.BUILD "R_DateTime.o" : "/dest/applied/gf2.5/gf/granite/granitecore/dutil/src" "R_DateTime.cc"
+#.TEMPLATE 81 : 83 80
+#.BUILD "R_File.o" : "/dest/applied/gf2.5/gf/granite/granitecore/dutil/src" "R_File.cc"
+#.TEMPLATE 83 : 
+#.TEMPLATE 84 : 80
+#.BUILD "R_Log.o" : "/dest/applied/gf2.5/gf/granite/granitecore/dutil/src" "R_Log.cc"
+#.TEMPLATE 88 : 91
+#.TEMPLATE 91 : 
+#.TEMPLATE 86 : 90 88 60 91 89 80
+#.BUILD "R_Table.o" : "/dest/applied/gf2.5/gf/granite/granitecore/dutil/src" "R_Table.cc"
+#.TEMPLATE 90 : 
+#.TEMPLATE 89 : 
+#.PROGRAM "../../libdutil.so"

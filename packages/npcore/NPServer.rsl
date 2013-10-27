@@ -1,0 +1,49 @@
+/**
+ * A named pipe (fifo) RSL server.
+ *
+ * $Id: NPServer.rsl,v 1.1 1998/11/17 23:08:23 toddm Exp $
+ */
+class NPServer extends Server {
+
+	/**
+	 * Named pipe being read.
+	 */
+	String Fifo;
+
+	/**
+	 * Initialize this NPServer.
+	 */
+	Init ();
+
+	/**
+	 * Start this NPServer.
+	 */
+	StartServer ();
+
+	/**
+	 * Start this NPServer.
+	 *
+	 * Params:
+	 *    table - table containing one key: "fifo"
+	 */
+	StartServer (Table tblParams);
+
+	/**
+	 * Flag signaling request for shutdown.
+	 */
+	Integer Shutdown;
+
+	/**
+ 	 * Shuts down this server after the specified time.
+	 * This method is needed to override its namesake in
+	 * the superclass.  
+	 *
+	 * Params:
+	 *    seconds - time until shutdown
+	 *
+	 * Note: Not fully implemented.
+	 */
+	Shutdown (Integer seconds) {
+	        Shutdown = 1;
+	}
+}

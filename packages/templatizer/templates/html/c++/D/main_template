@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<TITLE>D<CLASSNAME></TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<a name="#Top"> </a>
+
+<h1>D<CLASSNAME></h1>
+
+<blockquote>
+<CLASS_DESCRIPTION>
+</blockquote>
+
+<b>D<CLASSNAME></b> is
+
+<UL>
+	<LI><a href="#DO_">DO_<CLASSNAME></a> - the implementation
+	<LI><a href="#DR_">DR_<CLASSNAME></a> - the "smart pointer" reference to DO_<CLASSNAME>
+</UL>
+
+<P>and</P>
+
+<UL>
+	<LI>DOC_<CLASSNAME> - private to DO_<CLASSNAME> and DR_<CLASSNAME>
+</UL>
+
+<p><i><a href="#transnotes">translation notes</a></i></P>
+
+<HR>
+
+<a name="DO_"> </a>
+<h2>class DO_<CLASSNAME></h2>
+<blockquote>
+<blockquote>
+	a public subclass of <a href="D<SUPERCLASS>.html">DO_<SUPERCLASS></a> . . . <a href="DObject.html">DO_Object</a> . . . <a href="D.html">D</a>
+</blockquote>
+
+
+<h4>Private instance variables</h4>
+<DATA_DECL_TEMPLATE>
+
+<h4>Public member functions</h4>
+<METHOD_DECL_TEMPLATE>
+
+<h4>Standard DO public member functions</h4>
+<PRE>
+	DO_<CLASSNAME>();
+	DO_<CLASSNAME>(<a href="DRef.html">DRef</a> r);
+	virtual ~DO_<CLASSNAME>();
+
+	static <a href="DClass.html">DR_Class</a> <CLASSNAME>class;		<font color="#008000">the class object</font>
+	static DR_<CLASSNAME> <a href="stdD.html#DO_New"><font size="+1"><b>New</b></font></a>();
+	<a href="DClass.html">DR_Class</a> <a href="stdD.html#DO_Class"><font size="+1"><b>DClass</b></font></a>();
+
+	DRef <a href="stdD.html#DO_route"><font size="+1"><b>route</b></font></a>(DR_<a href="DDMessage.html">Message</a> m);
+	void <a href="stdD.html#DO_init"><font size="+1"><b>init</b></font></a>();
+	void <a href="stdD.html#DO_destroy"><font size="+1"><b>destroy</b></font></a>();
+</PRE>
+
+</blockquote>
+
+<HR>
+
+<!-- The DR class. First row is class name etc. -->
+
+<a name="DR_"> </a>
+<h2>class DR_<CLASSNAME></h2>
+<blockquote>
+
+	<blockquote>
+	a public subclass of <a href="D<SUPERCLASS>.html">DR_<SUPERCLASS></a> . . . <a href="DRef.html">DRef</a>
+	</blockquote>
+
+<h4>Standard DRef public member functions</h4>
+
+<pre>
+	<a href="stdD.html#DR_d_constructor">DR_<CLASSNAME> (D *d=0)</a>;
+	<a href="stdD.html#DR_dref_constructor">DR_<CLASSNAME> (const DRef& ref)</a>;
+	virtual ~<a href="stdD.html#DR_destructor">DR_<CLASSNAME>()</a>;
+</pre>
+
+
+<table border="1" cellpadding="3" cellspacing="0">
+<tr><td><div align="right"><I>note: <B>not</B> virtual functions</I></div><pre>
+	DO_<CLASSNAME> *<a href="stdD.html#DR_const_get"><font size="+1"><b>const_get</b></font></a>() <b>const</b>;
+	DO_<CLASSNAME> *<a href="stdD.html#DR_safe_get"><font size="+1"><b>safe_get</b></font></a>();
+	DO_<CLASSNAME> *<a href="stdD.html#DR_safe_set"><font size="+1"><b>safe_set</b></font></a>(D* d);
+	DO_<CLASSNAME> *<a href="stdD.html#DR_New"><font size="+1"><b>New</b></font></a>();
+
+	inline DO_<CLASSNAME> *<a href="stdD.html#DR_memberaccess"><font size="+1"><b>operator-></b></font></a>() { return <a href="stdD.html#DR_safe_get">safe_get</a>(); }
+</pre>
+</td></tr>
+</table>
+
+</blockquote>
+
+<HR>
+
+<a name="transnotes"> </a>
+
+<h2>rsl2D Translation Notes</h2>
+
+<PRE>
+<NOTES>
+</PRE>
+
+<hr>
+
+<a href="#top">Top</a>
+
+</BODY>
+</HTML>

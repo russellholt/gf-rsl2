@@ -1,0 +1,5 @@
+/** enumerates collections */
+native class Enumerator extends D {
+	native Boolean hasMoreElements();
+	native Object nextElement();
+}

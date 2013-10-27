@@ -1,0 +1,15 @@
+// ================================================================
+// NAME:    webform.rsl
+//
+// PURPOSE: 
+//          Base Form class from which all AOL forms "inherit".
+//
+// $Id: WebForm.rsl,v 1.1 1998/11/17 23:02:23 toddm Exp $
+//
+// Copyright 1997 by Destiny Software Corporation 
+// ================================================================
+
+class WebForm extends Form
+{
+	String  TemplateName;
+}

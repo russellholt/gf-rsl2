@@ -1,0 +1,10 @@
+class templatizer {
+
+	/**
+		<LI> templatePath: full path too template kinds. must end with "/"
+		<LI> kind: kind of the template, eg "D", "autodoc". must end with "/"
+		<LI> classname: name of rsl class to convert
+	*/
+	convert(String templatePath, String kind, String classname);
+
+}

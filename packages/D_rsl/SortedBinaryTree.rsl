@@ -1,0 +1,10 @@
+/**
+	A sorted binary tree extends the basic a binary tree
+	to provide more useful insertion
+*/
+native class SortedBinaryTree extends Composite {
+	native BinaryTree root;
+	native add(Object o);
+}
+
+

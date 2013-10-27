@@ -1,0 +1,22 @@
+/** a composite object */
+native class Composite extends Collection {
+	/** where the stuff is stored */
+	native KeyedCollection storage;
+
+	/** add an object */
+	native add(String name, Object obj);
+
+	/** get an object */
+	native Object get(String name);
+
+	/** remove an object and return it */
+	native Object remove(String name);
+
+	/** find out whether the named object exists within self. */
+	native Bool contains(String objectName);
+	native Bool doesNotContain(String objectName);
+
+	/** adds as a private data member (secondary reference) */
+	native addPrivate(String name, x);
+	
+}

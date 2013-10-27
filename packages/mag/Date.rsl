@@ -1,0 +1,23 @@
+/**
+
+When constructed a Date has the value of the current date.
+- operator expects a Date.
+relational operators expect a Date or String.
+= expects a Date or String
++= -= expect an Int
+*/
+native class Date extends Magnitude {
+native Date -(op);
+native Int -(op);
+native Int +(op);
+
+native Date +=(op);
+native Date -=(op);
+native Date :=(op);
+
+native Bool <(op);
+native Bool >(op);
+native Bool <=(op);
+native Bool >=(op);
+native Bool ==(op);
+}

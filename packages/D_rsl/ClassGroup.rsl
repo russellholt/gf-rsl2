@@ -1,0 +1,11 @@
+/** group of class libraries */
+native class ClassGroup extends D {
+	/** dictinary of class name to library */
+	native private Dictionary classlib;
+
+	/** add a name to library mapping for a class */
+	native addClass(String classname, Library lib);
+
+	/** create an object of the given class */
+	native Object create(String classname);
+}

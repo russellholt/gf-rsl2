@@ -1,0 +1,25 @@
+/**
+	A magnitude of any kind
+*/
+native class Magnitude extends D {
+
+	/** assignment */
+	native Magnitude  :=(Magnitude n);
+
+	/** addition */
+	native Magnitude + (Magnitude n);
+	native Magnitude - (Magnitude n);
+	native Magnitude * (Magnitude n);
+	native Magnitude / (Magnitude n);
+
+	/** equality */
+	native Boolean == (Magnitude n);
+	native Boolean != (Magnitude n);
+
+	/** ordinal comparison */
+	native Boolean < (Magnitude n);
+	native Boolean > (Magnitude n);
+	native Boolean <= (Magnitude n);
+	native Boolean >= (Magnitude n);
+
+}

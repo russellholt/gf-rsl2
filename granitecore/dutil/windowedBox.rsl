@@ -1,0 +1,35 @@
+
+// windowedBox.rsl
+// $Id: windowedBox.rsl,v 1.1 1998/11/17 23:45:58 toddm Exp $
+
+class windowedBox {
+	List lines;
+	Integer start, length;
+	Boolean replaceOnNext;
+	String lineSeparator;
+
+	Init() {
+		start = 0;
+		length= 3;
+		replaceOnNext = true;
+		lineSeparator = "\\";	// parses to a single '\'
+	}
+
+	set(List l) {
+		lines <- l;
+	}
+	
+	nextWindow();
+}
+
+windowedBox::nextWindow()
+{
+	if (replaceOnNext) {
+		clearWindow();
+	}
+
+	foreach x in (lines.sublist(start, start + length - 1))
+		addToWindow(x);
+
+	start += length;
+}

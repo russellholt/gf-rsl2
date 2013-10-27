@@ -1,0 +1,14 @@
+// textbox.rsl
+// $Id: textbox.rsl,v 1.1 1998/11/17 23:45:55 toddm Exp $
+
+class textbox extends windowedBox {
+	String window;
+	
+	addToWindow(x) {
+		window.append(x, lineSeparator);
+	}
+
+	clearWindow() {
+		window = "";
+	}
+}

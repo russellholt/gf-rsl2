@@ -1,0 +1,79 @@
+/**
+	objectTemplatizer
+
+	Merges objects with templates to produce output text,
+	such as HTML that contain references to objects. These
+	references are:
+
+
+	The template files may be cached to improve performance.
+	A max memory bound may be specified, to dump the least recently
+	used template so that the cache remains bounded.
+	In addition, certain templates may be marked as permanent, which
+	means they are not considered in the LRU algorithm to bound the size
+	of the cache.
+ */
+
+import file_utils;
+
+global FileInfo fileInfo;
+
+class objectTemplatizer {
+	Table cache;
+	Integer currentSizeKB, upperBoundKB;
+
+	/** set the max size of the cache.
+		least recently used templates will be discarded. */
+	setCacheLimit(Integer kilobytes);
+	
+	/**
+	 * load a template file into the cache and keep it around forever
+	 * with the exception of the clearCache() method.
+	 * Give the full pathname to the template file.
+	 */
+	loadTemplate(String templatePathname, Boolean permanent)
+	{
+		File f;
+		List l;
+
+		if (f.Open(templatePathname))
+		{
+			f >> l;		
+			Integer size = fileInfo.size(templatePathname);
+		
+			addTemplate(templatePathname, l, size);
+		}
+		
+	}
+	
+	/**
+	 * Give a list of template path names.
+	 */
+	loadTemplates(List templatePathnames, Boolean permanent)
+	{
+		foreach x in (tmeplatePathnames) {
+			loadTemplate(x, permanent);
+		}
+	}
+	
+	/** template as list of strings (lines). */
+	addTemplate(String name, List l, Integer size)
+	{
+		if (totalSize + size > 
+		cache.add(name, l);
+		totalSize += size;
+	}
+	
+	
+	/**
+	 * clear the cache, including "permanent" templates. 
+	 */
+	clearCache() {
+		cache.clear();
+		curentSizeKB = 0;
+	}
+
+	
+	
+	
+}

@@ -1,0 +1,4 @@
+/** a library of classes */
+native class Library extends D {
+	native Object create(String classname);
+}

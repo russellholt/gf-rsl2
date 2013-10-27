@@ -1,0 +1,14 @@
+// listbox.rsl
+// $Id: listbox.rsl,v 1.1 1998/11/17 23:45:52 toddm Exp $
+
+class listbox extends windowedBox {
+	List window;
+	
+	addToWindow(x) {
+		x.append(lineSeparator);
+		window.append(x);
+	}
+	clearWindow() {
+		window.clear();
+	}
+}

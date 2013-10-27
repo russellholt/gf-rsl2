@@ -1,0 +1,81 @@
+/**
+	Object: the superclass
+
+	<P><B>Copyright 1998 by Destiny Software Corporation</B></P>
+*/
+import langutils;
+
+class Object {
+
+	/** dynamically a reference the object <b>x</b> to self, as <b>name</b>.
+		may not be implemented for all clases (e.g. String).  If
+		the named object already exists, it will be replaced within self,
+		which means that the given name will be a reference to the new
+		object, the old being forgotten in this scope.  */
+	add(String name, obj);
+
+	/** remove the named object. */
+	remove(String objectName);
+
+	/** better than find */
+	Object / (...);
+	Object / ();
+
+	/** find and return the named object in self. */
+	Object find(String objectName);
+
+	/** assignment */
+	:= (x);
+	assign(x);
+
+	/** get class information */
+	String className();
+	List localVarNames();
+	
+	/** adds as a private data member */
+	addPrivate(String name, x);
+
+	/** find out whether the named object exists within self. */
+	Boolean contains(String objectName);
+	Boolean doesNotContain(String objectName);
+
+	/** find out whether self is an instance of the given class name. */
+	Boolean instanceOf(String className);
+
+	/** test for equality. class dependent, often implemented internally. */
+	Boolean isEqual(x);
+	Boolean == (x);
+	Boolean not();
+
+	/** Resize the local namespace */
+	setDynamicSpace(Integer n);
+
+	/** clear this object */
+	clear();
+
+	/** copy this object */
+	clone();
+
+	Object _get();
+	_assign(x) { assign(x); }
+}
+
+// *****************************************************************
+// *                                                
+// *  Method:   _get
+// *                                              
+// *  Purpose:  return self
+// *                                                
+// *****************************************************************
+
+Object Object::_get()
+{
+	RSL_System sys;
+    _transfer_ To;
+
+    sys.get(To, self);
+
+//    Log.debug("Object::_get() ==> ", To, endl);
+	
+    return To;
+}

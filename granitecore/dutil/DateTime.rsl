@@ -1,0 +1,116 @@
+/**
+	A time and date data type.
+*/
+class DateTime
+{
+	/** See <code>Day( Integer iDay );</code> below. */
+    String Day( );
+    String Day( String strDay);
+	/** The new value for day can be specified as an integer
+		or string.  Valid day range 1 - 31.<br>
+
+		A 2-digit day string is returned.
+		<i>Note</i> if the new_value for day is invalid, nothing is
+		returned <b>and</b> the day value is unchanged.  */
+    String Day( Integer iDay );
+
+	/** See <code>Month( Integer iMonth );</code> below. */
+    String Month( );
+    String Month( String strMonth );
+	/** The new value for month can be specified as an integer
+        or string.  Valid month range 1 - 12.<br>
+
+        A 2-digit month string is returned.
+        <i>Note</i> if the new_value for month is invalid, nothing is
+        returned <b>and</b> the month value is unchanged. */
+    String Month( Integer iMonth );
+
+	/** See <code>Year( Integer iYear );</code> below. */
+    String Year( );
+    String Year( String strYear );
+    /** The new value for year can be specified as an integer
+        or string, and it can be specified as a 2-digit 
+        year (without the century marker) or 4-digit year.
+        See Notes above on 2 to 4 digit year mapping.<br>
+
+        A 4-digit year string is returned.<br>
+        <i>Note</i> if the new_value for year is invalid, nothing is
+        returned <b>and</b> the year value is unchanged. */
+    String Year( Integer iYear );
+
+	/** Returns true if this object has not been assigned a value.  */
+    Boolean IsNull( );
+
+	/** See <code>Boolean >=( DateTime rDate );</code> below. */
+    Boolean <( DateTime rDate );
+    Boolean >( DateTime rDate );
+    Boolean ==( DateTime rDate );
+    Boolean !=( DateTime rDate );
+    Boolean <=( DateTime rDate );
+	/** comparison */
+    Boolean >=( DateTime rDate );
+    
+	/** Sets the DateTime to the current time and returns
+		the formatted date-time string. */
+    String Time( );
+
+	/** See <code> Assign( String strDate );</code> below. */
+    =( DateTime rDate );
+    =( String strDate );
+    Assign( DateTime rDate );
+    Assign( DateTime rDate, String strInputFormat );
+    Assign( String strDate );
+	/** Assigns the new date-time (rDate, strDate) to DateTime, using the
+        previously set input_format specification to parse the
+        new date-time, or the new input format (strInputFormat).  */
+    Assign( String strDate, String strInputFormat );
+
+	/** See <code>String Format( String strFormat );</code> below. */
+    String Format(  );
+	/** Relies on UNIX library function <code>strftime()</code> to 
+        perform the actual conversion from the internal representation 
+		of date-time to the formatted string.  See <code>strftime()</code> for
+        format specification (strFormat) details.  strFormat parameter
+        is optional.  If not supplied, the last supplied strFormat
+        Or, the default format specification %m%d%y is used.<br>
+
+        Returns the formatted date-time string.*/
+    String Format( String strFormat );
+
+	/** See <code>String Input_Format( String strFormat ); </code> below. */
+    String Input_Format( );
+    /** <code>strFormat</code>  specifies the rules for parsing an incoming DateTime
+        string.  Default input_format is "%m/%d/%y".  The format
+        tokens supported are:<pre>
+
+        m   Month
+        d   Day of the month
+        y   2-digit year within century
+        Y   4-digit year with century
+        M   Minutes
+        H   Hour, military style
+        S   Seconds
+		</pre>
+        The default input_format is "%m/%d/%y".<br>
+        By default, the separator between date fields can be '/',
+        '.' or '-'.  An additional separator may be specified in
+        input_format, but the default set is always applicable.<br>
+
+        The current input_format string is returned. */
+    String Input_Format( String strFormat );
+
+
+	/** See <code>String Output_Format( String strFormat );</code> below. */
+    String Output_Format( );
+	/** <code>strFormat</code> specifies the rules for formatting DateTime as a string.
+	Default output_format is "%m/%d/%y".<br>
+	See UNIX <code>strftime()</code> for supported formatting tokens.<br>
+
+	The current output format string is returned. */
+    String Output_Format( String strFormat );
+
+	/** This is a resource debugging function that displays the
+        contents of the resource in a formatted manner.
+        Returns nothing. */
+    Print( );
+}

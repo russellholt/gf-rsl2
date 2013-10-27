@@ -1,0 +1,22 @@
+/**
+	A binary tree is nothing more than a thing with
+	two other binary trees.
+
+	class <b>SortedBinaryTree</b> is more interesting.
+*/
+native class BinaryTree {
+
+	native setObject(Object o);
+	native Object getObject();
+
+	native setLeft(BinaryTree t);
+	native setRight(BinaryTree t);
+
+	native BinaryTree getLeft();
+	native BinaryTree getRight();
+
+	native List inOrder();
+	native List preOrder();
+	native List postOrder();
+}
+

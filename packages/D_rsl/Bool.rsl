@@ -1,0 +1,20 @@
+/**
+	Bool: a boolean
+
+	true or false,
+	one or zero,
+	being or non-being.
+*/
+native class Bool extends Magnitude {
+
+	native Bool := (b);
+
+	native Bool == (b);
+	native Bool != (b);
+	native Bool < (b);
+	native Bool > (b);
+	native Bool <= (b);
+	native Bool >= (b);
+
+}
+

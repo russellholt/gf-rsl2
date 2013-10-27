@@ -1,0 +1,38 @@
+/**
+	D..
+	$Id: D.rsl,v 1.4 1998/11/23 15:36:14 holtrf Exp $
+*/
+native class D {
+
+	/** assignment */
+	native := (Object o);
+	native assign(Object o);
+
+	/** basic "conversion" */
+	native String toString();
+	native Bool toBoolean();
+
+	/** class information */
+	native Class classobj();
+	native Int dtypeid();
+
+	/** general message sending */
+	native Object route(Message m);
+
+	/** like route(Message m), except msg specifies the text of a message name,
+		with additional arguments following. */
+	native Object route(String msg, ...);
+
+	/** operator interface to route() */
+	native << (Message m);
+
+	/** operator interface to route(). msg specifies the text of a message name that
+		takes no arguments. similar to route(String msg, ...) */
+	native << (String msg);
+
+	/** create a new object whose instance variables are the deepCopy()ies of
+		each instance variable. */
+	native Object deepCopy();
+
+
+}

@@ -1,0 +1,22 @@
+/**
+	a view into an on-disk folder.
+*/
+class Folder /* extends XTable */ {
+	String name;
+	List contents;
+	
+	load(String fromPath);
+	load(FileInfo from);
+
+	loadRecursively(String fromPath);
+	loadRecursively(FileInfo from);
+	
+	onlyFolders();
+	onlyFiles();
+	all();
+
+	List contents();
+	List files();
+	List folders();
+
+}

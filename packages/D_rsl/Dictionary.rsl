@@ -1,0 +1,17 @@
+/**
+	a dictionary
+*/
+native class Dictionary {
+
+	/** add the object <code>o</code>
+		with name <code>key</code> */
+	native add(String key, Object o);
+
+	/** return the object by key */
+	native Object get(String key);
+
+	/** number of elements in the dictionary */
+	native Int size();
+
+	native void remove(String key);
+}

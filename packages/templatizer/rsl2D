@@ -1,0 +1,73 @@
+#!/bin/zsh
+
+# Which prototype version of foundation
+#vbeta=2.5a3
+vbeta=2.5a6.1
+
+file=.rsl2D_startup.rsl
+cline=.rsl2D_cline
+
+##################################################
+# Set up environment stuff
+# NOTE! using Russell's prototype Foundation 2.5
+##################################################
+
+
+export GRANITE; GRANITE=/dest/applied/gf2.5/Releases/gf/gf-${vbeta}
+export PROJECT; PROJECT=$GRANITE:$GRANITE/packages
+
+. all-setup >& /dev/null
+
+
+templates=$GRANITE/packages/templatizer/templates/
+
+printf "rsl2D BETA build %s, Foundation %s\n" `cat $GRANITE/packages/templatizer/src/build` $vbeta
+printf "Using templates in %s\n\n" $templates
+
+
+#
+# Create the output file
+#
+cat >${file} <<EOF
+import templatizer;
+
+class it {
+	doit() {
+		String tdir <- "${templates}";
+		templatizer r;
+EOF
+
+#
+# Add a conversion statement for each class name
+#
+for i in $*
+do
+	printf "file %s/%s.rsl\n" $PWD $i
+	cat >>${file} <<EOF
+		out.print("Converting class ${i}...", endl);
+		r.convert(templatePath:tdir, kind:"c++", classname:"${i}");
+EOF
+
+done
+
+cat >>${file} <<EOF
+	}
+}
+EOF
+
+#
+# Create a command line to start the thing
+#
+printf "rsl -start it.doit %s " ${file} > $cline
+
+for i in $*
+do
+	printf "%s.rsl " $i >> $cline
+done
+
+############################################
+# Do it: execute the command line we built.
+############################################
+
+. $cline
+

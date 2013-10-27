@@ -1,0 +1,2 @@
+		case <ROUTE_CASE>:
+			return <METHOD_NAME>( <ROUTE_PARAM_LIST> );

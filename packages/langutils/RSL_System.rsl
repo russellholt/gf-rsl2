@@ -1,0 +1,61 @@
+/**
+	A random collection of things that could be
+	incorporated into the heart of RSL...
+*/
+
+class RSL_System {
+	
+	/** Indirect instantiation: returns a new object
+		of the named type */
+	instantiate(String classname);
+	instantiate(String classname, String strContext);
+
+    /** get an object including it's <b>shared</b> members */
+    get(To, From);
+
+    /** Remove the specified session */
+    QuitSession(String strSession);
+
+	/** Transform the given String into an RSL object,
+		and return the new object. */
+	deStream(String streamed);
+
+	/** forget about the named class */
+	removeClass(String classname);
+	
+	/** The RSL Hash function, "printed" to a string. */
+	String hashCode(String name);
+	
+	/** built-in assignment */
+	assign(lval, rval);
+	
+	/** Read (parse) an object from the given filename.
+		Returns the parsed object.*/
+	readObject(String filename);
+	
+	/** Translate the given object into an ascii stream,
+		RSL object syntax. */
+	String stream(x);
+	
+	/** Write the given object (x) to the named file. */
+	writeObject(String filename, x);
+
+	/** document a class in HTML. put the file in the
+		given directory name */
+	documentClass(String classname, String directory);
+
+	/** document all classes in HTML, in the given
+		directory. Generates an index file called
+		<a href="class_index.html">class_index.html</a> */
+	documentAllClasses(String directory);
+
+	/** <b>obsolete</b>: stuff arguments into given container. */
+	insert(container, ...);
+
+	/** <b>obsolete</b>: (and not implemented) */
+	remove(container, ...);
+
+	/** <b>obsolete</b>: return the class name of the given object. */
+	String className(object);
+	
+}

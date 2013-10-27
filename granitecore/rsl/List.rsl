@@ -1,0 +1,86 @@
+// $Id: List.rsl,v 1.1 1998/11/17 23:51:03 toddm Exp $
+
+/**
+	An unsorted linked list (linear collection) class.  Good for general 
+	collections where random access searching is not important (or a slow 
+	linear search is acceptable).  Lists may be iterated with the RSL 
+	<b>foreach</b> statement. For fast random access, use Table.
+*/
+
+class List {
+
+	/** Add a reference to each argument to the end of
+		the list. */
+	append(...);
+
+	/** Add a copy of each argument in order to the end
+		of the list. */
+	appendCopy(...);
+
+	/** Add a reference to each argument to the end of
+		the list */
+	prepend(...);
+
+	/** Insert a copy of each argument in order to the
+		beginning of the list. */
+	prependCopy(...);
+
+	/** First element (index 0) */
+	Resource front();
+
+	/** Remove & return the first element (index 0) */
+	Resource removeFront();
+
+	/** Last element */
+	Resource tail();
+	
+	/** Remove & return the last element */
+	Resource removeTail();
+
+	/** indexed element access. */
+	Resource [] (Integer index);
+
+	/**  */
+	Resource findByValue(String member, value);
+
+	/** Resource deletion (NOT IMPLEMENTED) */
+	deleteByName(String name);
+	deleteByIndex(Integer index);
+	deleteByValue(String method, Resource value);
+
+	/** Assignment */
+	:= (List l);
+
+	/** Assignment (OBSOLETE) */
+	= (List l);
+	
+	/** number of elements */
+	Integer length();
+	
+	/** remove all elements */
+	clear();
+
+	/** return a new list by transforming the elements
+		into the given named type */
+	List * (String type);
+	List transform(String type);
+	
+	/** invoke method and optional arguments on
+		each element in the list. Return a List of
+		the results */
+	List distribute(String method);
+	List distribute(String method, ...);
+
+	/** sublist operations. Remember that the list
+		is zero-based. For example, before(1) returns a
+		List with only one element. */
+	List before(Integer index);
+	List after(Integer index);
+	
+	/** return a sublist. If "end" is negative,
+		length - end will be used as the final
+		index. So, for example, sublist(1, -1)
+		will return a List that is missing the
+		first and last elements. */
+	List sublist(Integer start, Integer end);
+}

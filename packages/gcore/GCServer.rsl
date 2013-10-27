@@ -1,0 +1,17 @@
+//
+// Granite Core Server
+//
+// method GCServer::Init() is the configuration routine
+// and must be supplied for each project, most likely in
+// the file CoreInit.rsl
+//
+// $Id: GCServer.rsl,v 1.1 1998/11/17 23:05:52 toddm Exp $
+
+class GCServer extends Server {
+// data
+
+// methods
+	Init();
+	StartServer();
+    StartServer(Table tblParams);
+}

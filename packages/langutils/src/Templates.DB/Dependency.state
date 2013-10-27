@@ -1,0 +1,34 @@
+#.VER "2.0"
+#.DECLARE %1"RslObjectParser.o": %2"RslObjectParser.cc"
+#.DECLARE %3"q9I3jNVgl_YM": %4"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/xpslist.h"
+#.DECLARE %5"R_RSL_System.o": %6"R_RSL_System.cc"
+#.DECLARE %7"S6VUfF8v5ec5": %8"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/xvhasht.h"
+#.DECLARE %9"bFTYBMHk5sQl": %10"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/xphasht.h"
+#.DECLARE %11"UA2KbwqXk843": 8 
+#.DECLARE %12"xQL4e0Kx6O1M": %13"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/tislist.h"
+#.DECLARE %14"FpeOK@6jCP7J": 8 
+#.DECLARE %15"esoYEw1ua8TX": 4 
+#.DECLARE %16"9zqnMo4LJH1D": 8 
+#.OPTIONS 1 : %17"-I. -I/dest/applied/gf2.5/gf/granite/granitecore/include -I/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d -I/dest/tools/socket++-1.10 -I/usr/local/include -I/dest/applied/gf2.5/gf/granite/D -c  -PIC  -g  -DBOOL"
+#.OPTIONS 5 : 17 
+#.DEPEND 3 : %18"/dest/applied/gf2.5/gf/granite/D/D.h"%19,"DAtom.h"%20,"DMessage.h"%21,"DO_Object.h"%22,"DR_Object.h"%23,"DRef.h"%24,"DString.h"%25,"D_macros.h"%26,"Dcommon.h"%27"/dest/applied/gf2.5/gf/granite/granitecore/include/DirContents.h"%28,"R_Boolean.h"%29,"R_Integer.h"%30,"R_String.h"%31,"Resource.h"%32,"SharedLibrary.h"%33,"StringPair.h"%34,"b.h"%35,"destiny.h"%36,"drwcstring.h"%37,"evtstat.h"%38,"killevents.h"%39,"lexer_context.h"%40,"res_class.h"%41,"res_param.h"%42,"rslEvents.h"%43,"rslMethod.h"%44,"runtime.h"%45,"rw_utils.h"%46"/dest/applied/gf2.5/gf/granite/packages/langutils/src/RslObjectParser.h"%47"/sw/opt/SUNWspro/SC4.2/include/CC/fstream.h"%48,"generic.h"%49,"iostream.h"%50,"rlocks.h"%51,"strstream.h"%52"/usr/include/assert.h"%53,"ctype.h"%54,"dirent.h"%55,"dlfcn.h"%56,"stddef.h"%57,"stdio.h"%58,"stdlib.h"%59,"string.h"%60"/usr/include/sys/dirent.h"%61,"feature_tests.h"%62,"isa_defs.h"%63,"machsig.h"%64,"machtypes.h"%65,"select.h"%66,"siginfo.h"%67,"time.h"%68,"types.h"%69"/usr/include/time.h"%70"/usr/local/include/FlexLexer.h"%71"/usr/local/rwav/workspaces/SOLARIS25/SUNPRO42/4d/rw/colclass.h"%72,"collect.h"%73,"compiler.h"%74,"cstring.h"%75,"ctoken.h"%76,"defs.h"%77,"edefs.h"%78,"epersist.h"%79,"generic.h"%80,"gvector.h"%81,"hashtab.h"%82,"islist.h"%83,"iterator.h"%84,"mempool.h"%85,"message.h"%86,"pvector.h"%87,"ref.h"%88,"regexp.h"%89,"rstream.h"%90,"rwalloc.h"%91,"rwerr.h"%92,"rwfile.h"%93,"rwset.h"%94,"rwstore.h"%95,"stringid.h"%96,"strmshft.h"%97,"tasslnk.h"%98,"thashfun.h"13%99,"tooldefs.h"%100,"toolerr.h"%101,"tphdict.h"%102,"tphset.h"%103,"tpordvec.h"%104,"tpsldict.h"%105,"tpslist.h"%106,"tpvector.h"%107,"tvhdict.h"%108,"tvhset.h"%109,"tvsldict.h"%110,"tvslist.h"%111,"vstream.h"10%112,"xphdict.h"%113,"xphset.h"%114,"xpordvec.h"%115,"xpslist.cc"4 8%116,"xvhdict.h"%117,"xvhset.h"%118,"xvslist.h"
+#.DEPEND 7 : *20 39*4%119,"rsldefaults.h"44*1%120,"slog.h"%121"/dest/applied/gf2.5/gf/granite/packages/langutils/src/R_RSL_System.h"46*2%122,"iomanip.h"49*1%123,"stdiostream.h"%124,"stream.h"51 53*2%125,"stdarg.h"56*14 73*4 79 82 84*4 90*1 96*15 10*3 4%126,"xvhasht.cc"8*3
+#.DEPEND 9 : *88%127,"xphasht.cc"10*9
+#.DEPEND 11 : *88 10*9
+#.DEPEND 12 : *75%128,"tislist.cc"13*12 127*10
+#.DEPEND 14 : *75 13*12 10*9
+#.DEPEND 15 : *88 127*10
+#.DEPEND 16 : *88 10*9
+#.TEMPLATE 1 : 3
+#.BUILD "RslObjectParser.o" : "/dest/applied/gf2.5/gf/granite/packages/langutils/src" "RslObjectParser.cc"
+#.TEMPLATE 3 : 
+#.TEMPLATE 7 : 16
+#.TEMPLATE 16 : 
+#.TEMPLATE 9 : 15
+#.TEMPLATE 15 : 
+#.TEMPLATE 11 : 14
+#.TEMPLATE 14 : 
+#.TEMPLATE 5 : 16 14 7 11 9 15 12
+#.BUILD "R_RSL_System.o" : "/dest/applied/gf2.5/gf/granite/packages/langutils/src" "R_RSL_System.cc"
+#.TEMPLATE 12 : 
+#.PROGRAM "../../liblangutils.so"

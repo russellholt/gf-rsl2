@@ -1,0 +1,6 @@
+
+native class ECI_OStream {
+
+	native String stream(Object o);
+	native String composite(Composite c);
+}

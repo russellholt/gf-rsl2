@@ -1,0 +1,17 @@
+export ROOT=$PWD
+
+export GRANITE=$PWD
+export PROJECT=$PWD:$PWD/packages
+
+
+# location of D stuff: headers and libD.so
+export DCORE=$PWD/D
+
+# location of cryptography stuff: headers and libencrypt.so
+export CRYPTO=$PWD/cryptography
+
+. all-setup
+
+echo
+echo Using D from $DCORE
+echo Using Encryption from $CRYPTO

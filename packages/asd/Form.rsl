@@ -1,0 +1,18 @@
+// ================================================================
+// NAME:    form.rsl
+//
+// PURPOSE: 
+//          Base Form class from which all forms "inherit".
+//
+// $Id: Form.rsl,v 1.1 1998/11/17 23:02:03 toddm Exp $
+//
+// Copyright 1997 by Destiny Software Corporation 
+// ================================================================
+
+class Form
+{
+    String  Title;	
+    String  MessageText;
+
+	String objectName;
+}

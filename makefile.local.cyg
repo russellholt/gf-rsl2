@@ -1,0 +1,103 @@
+# makefile.local
+# Sets environment variables, to be included by sub-makefiles
+#
+# $Id: makefile.local.cyg,v 1.1 1998/11/17 23:32:53 toddm Exp $
+# Copyright (c) 1997, Destiny Software Corporation
+
+# ********************
+# * various commands *
+# ********************
+CCC = g++
+CC = g++
+LD = ld
+MAKE = make
+FLEX = flex++
+BISON = bison
+AR = ar cr
+MV = mv -f
+CP = cp -f
+RM = rm -f
+CD = cd
+
+# ******************
+# * Compiler Flags *
+# ******************
+DBG_FLAG = -g
+
+# compiler option to generate position independent code
+FPIC = -fPIC
+
+# compiler option to generate shared libraries
+SHARE = -shared
+
+# specifes library search dirs to runtime linker
+RPATH = -rpath
+
+USE_EXCEPTIONS = -fexceptions
+
+# ************************************
+# * directory trees for installation *
+# ************************************
+TOOLS= /dest/tools
+
+# ************************************************
+# * Location of Rogue Wave Tools.h++ (librwtool) *
+# ************************************************
+RW_INC = /usr/local/lib/rogue
+RWDIR = /usr/local/lib/rogue/lib
+
+# link command for Rogue Wave Tools.h++ shared library (.so)
+RWLIB = -lcyg-rwtool
+
+# pathname to Rogue Wave Tools.h++ static library (.a)
+SRWLIB = -lcyg-rwtool.a
+
+# **********************************
+# * Location of the BSAFE toolkit  *
+# **********************************
+BSAFE_INC = /sw/bsafe40/solar26/library/include
+BSAFE_DIR = /sw/bsafe40/solar26/library/lib
+ 
+LIBBSAFE = -lbsafe
+ 
+# ******************************
+# * Location of Socket++ v1.10 *
+# ******************************
+SOCK_INC = /dest/tools/socket++-1.10
+SOCK_DIR = /dest/tools/socket++-1.10
+
+# link command for socket++ library (.so)
+SOCKXXLIB = -lcyg-socket++
+
+# pathname to Socket++ static library (.a)
+SSOCKXXLIB = -lcyg-socket++.a
+
+# **************************************************************
+# * extra local definitions									   *
+# * CYGSOL is defined at Destiny for location of Cygnus libg++ *
+# **************************************************************
+GPP = $(CYGSOL)/lib/libg++.a $(CYGSOL)/lib/libstdc++.a
+EXTRA_LOCAL_LIBS =  -L$(CYGSOL) $(GPP)
+
+# *****************************
+# * Standard socket libraries *
+# *****************************
+LIBSOCKET = -lsocket -lnsl
+
+# **************************
+# * User local include dir *
+# **************************
+LOCAL_INC = /usr/local/include
+
+# **********************************************************************
+# * local shared library linking flags for building the rsl executable *
+# * -export-dynamic is for Cygnus ld								   *
+# **********************************************************************
+LOCALDYNAMIC = -export-dynamic
+
+# ******************************************
+# * location of Purify headers and library *
+# * comment out if not using Purify.       *
+# ******************************************
+#export PURIFY_DIR = `purify -print-home-dir`
+

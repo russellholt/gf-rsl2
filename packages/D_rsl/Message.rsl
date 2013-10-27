@@ -1,0 +1,5 @@
+/** the message */
+native class Message extends D {
+	native String messageName;
+	native Dictionary dataDict;
+}

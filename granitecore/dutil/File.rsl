@@ -1,0 +1,55 @@
+/**
+	Disk file access.
+*/
+class File
+{
+	/** Open a file. SetName() must be called first to identify the
+		filename to be opened. */
+    Boolean Open( );
+
+	/** Open the named file. */
+    Boolean Open( String strFileName);
+
+	/** Open the named file with a specific mode,
+		one of "read", "write", or "append". */
+    Boolean Open( String strFileName, String strMode);
+
+	/** Set the name of the file. */
+    Boolean SetName( String strFileName );
+
+	/** Close the file, if open. */
+    Close();
+
+	/** Write the given arguments to the file. Returns true on success. */
+    Boolean Write(...);
+    <<(...);
+
+	/** Read a single line (of any size) from the file. Returns true on success. */
+    Boolean ReadLine( String strInput );
+
+	/** Read an entire file, storing it in the given String argument.
+		Returns true on success. */
+    Boolean ReadFile( String strInput );
+
+	/** Read an entire file, storing each line as an individual String in
+		the given List argument. Returns true on success. */
+    Boolean ReadFile( List lInput );
+
+	/** See Boolean ReadFile( String strInput ); */
+    >> ( String strInput );
+
+	/** See Boolean ReadFile( List lInput ); */
+    >> ( List lInput );
+
+	/** Send/Print this file to standard out. */
+    Boolean Send( );
+
+	/** Interprets each argument as a filename to be printed/sent to standard out. */
+    Boolean Send(...);
+
+	/** Send/Print this file to standard out. */
+    Boolean Print( );
+
+	/** Interprets each argument as a filename to be printed/sent to standard out. */
+    Boolean Print(...);
+}

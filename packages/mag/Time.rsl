@@ -1,0 +1,21 @@
+native class Time extends Magnitude {
+/**
+
+When you construct a Time it is the current time.  The ":=" operator accepts either a
+Time or a String, all other operators accept only a Time.  (Call me if that is a
+problem.)
+
+These classes internally store the time as a date/time.  Thus if Time aTime was created at
+8PM today and Time bTime was created at 9PM yesterday, bTime will be less than aTime.  
+
+
+*/
+
+native Time :=(op);
+
+native Bool <(op);
+native Bool >(op);
+native Bool <=(op);
+native Bool >=(op);
+native Bool ==(op);
+}

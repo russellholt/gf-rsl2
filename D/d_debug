@@ -1,0 +1,4 @@
+
+#D_DEBUG = -DDMEMORY -DD_KEEP_INUSE -I/sw/apps/purify -DPURIFY
+D_DEBUG = #-DDMEMORY -I/sw/apps/purify -DPURIFY
+

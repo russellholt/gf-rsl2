@@ -1,0 +1,62 @@
+/** An integer. */
+class Integer {
+
+	/** standard math */
+	Integer +(Integer i);
+	Integer -(Integer i);
+	Integer *(Integer i);
+	Integer /(Integer i);
+
+	/** modulous */
+	Integer %(Integer i);
+
+	/** Comparison */
+	Boolean <(Integer i);
+	Boolean >(Integer i);
+	Boolean <=(Integer i);
+	Boolean >=(Integer i);
+	Boolean !=(Integer i);
+	Boolean ==(Integer i);
+
+	/** Comparison with argument conversion */
+	Boolean <(String s);
+	Boolean >(String s);
+	Boolean <=(String s);
+	Boolean >=(String s);
+	Boolean !=(String s);
+	Boolean ==(String s);
+
+	/** Math with argument conversion */
+	Integer +(String s);
+	Integer -(String s);
+	Integer *(String s);
+	Integer /(String s);
+	Integer %(String s);
+
+	/** Assignment */
+	Integer :=(Integer i);
+	Integer +=(Integer i);
+	Integer -=(Integer i);
+	Integer *=(Integer i);
+	Integer /=(Integer i);
+
+	/** Assignment (OBSOLETE) */
+	Integer =(Integer i);
+
+	/** Assignment with conversion */
+	Integer :=(String s);
+	Integer +=(String s);
+	Integer -=(String s);
+	Integer *=(String s);
+	Integer /=(String s);
+
+	/** Assignment with conversion (OBSOLTE) */
+	Integer =(String s);
+
+	/** Conversion to String */
+	String text();			// Convert to String
+
+	/** Misc */
+	Boolean range(Integer lowerbound, Integer upperbound);
+}
+

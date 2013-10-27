@@ -1,0 +1,5 @@
+
+# RSL debug flags precede with -DRSL_DEBUG_
+# valid flags are PARSE LINK CREATE EXECUTE EXEDETAIL MEMORY OUTEVENT
+
+RSL_DEBUG_FLAGS = 
