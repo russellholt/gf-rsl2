@@ -1,0 +1,462 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0.2">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>D/Foundation Prototype Releases</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+<CENTER>
+<P><A HREF="DestinyC++.html"><FONT SIZE="2">Destiny C++</FONT></A><B> </B>| <A HREF="Overview.html"><FONT
+SIZE="2">Overview</FONT></A><B> | </B><A HREF="dReference.html"><FONT SIZE="2">Reference</FONT></A><FONT
+SIZE="2"> | </FONT><A HREF="comparison.html"><FONT SIZE="2">Sorting</FONT></A><FONT
+SIZE="2"><BR>
+</FONT><A HREF="Objects.html"><FONT SIZE="2">Class and Object Design</FONT></A><B>
+</B>|<B> </B><A HREF="rsl2d.html"><FONT SIZE="2">rsl2D</FONT></A><B> </B>|<B> </B><A
+HREF="R_D.html"><FONT SIZE="2">R_D</FONT></A> | <A HREF="Dfaq.html"><FONT SIZE="2">Martin's
+Questions</FONT></A> 
+<HR>
+<p></P>
+</CENTER>
+<H1>Foundation 2.5 prototype releases</H1>
+<P><B>Bold</B> are relatively major releases - use the latest bold one. <FONT COLOR="#FF0000">Red</FONT>
+releases are gone.</P>
+<H4>Alpha pre-releases</H4>
+
+<UL>
+	<LI><A HREF="#2.5a6.2a"><B>2.5a6.2a</B></A><B> - Dec 4</B><I> R_D and NULL</I>
+	<LI><A HREF="#2.5a6.2"><B>2.5a6.2</B></A><B> - Dec 3</B> <I>patches to 6.1</I>
+	<LI><A HREF="#2.5a6.1">2.5a6.1</A> - Nov 23 <I>pseudo-operator </I><FONT COLOR="#006600"><CODE><B>-&gt;</B></CODE></FONT>
+	<LI><A HREF="#2.5a6">2.5a6</A> - Nov 23 <I>autodoc</I>
+	<LI><A HREF="#2.5a5.9">2.5a5.9</A> - Nov 17
+	<LI><A HREF="#2.5a5.8"><B>2.5a5.8</B></A><B> - </B>Nov 13
+	<LI><FONT COLOR="#DD0000">2.5a</FONT><A HREF="#2.5a5.5">5.5</A> - Nov 11 <I>working
+	foundation</I>
+	<LI><A HREF="#2.5a5">2.5a5</A> - Nov 10
+	<LI><FONT COLOR="#DD0000">2.5a</FONT><A HREF="#2.5a4.9">4.9</A> - Nov 9
+	<LI><FONT COLOR="#FF0000">2.5a</FONT><A HREF="#2.5a4.8">4.8</A> - Nov 4 - <I>secondary
+	references</I>
+	<LI><FONT COLOR="#FF0000"><B>2.5a</B></FONT><A HREF="#2.5a4.5"><B>4.5</B></A> - Nov
+	2 - <I>memory management!</I>
+	<LI><FONT COLOR="#FF0000">2.5a4.02</FONT> - Oct 23
+	<LI><FONT COLOR="#FF0000">2.5a4.01</FONT> - Oct 23
+	<LI><A HREF="#2.5a3"><B>2.5a3</B></A> - Oct 21 - <I>final working </I><FONT COLOR="#006600"><I>rsl2D</I></FONT>
+	<LI><FONT COLOR="#FF0000">2.5a2</FONT> - Oct 14
+	<LI><A HREF="#2.5a1">2.5a1</A> - Oct 13
+</UL>
+
+
+
+<BLOCKQUOTE>
+	<P>
+<HR ALIGN="LEFT" WIDTH="30%" NOSHADE>
+<I>everything above lives in</I> <TT>/dest/applied/gf2.5/Releases/gf/</TT><p></P>
+
+</BLOCKQUOTE>
+
+<H4>Pre-pre- alpha</H4>
+
+<UL>
+	<LI><A HREF="#beta 1.0">Oct 1</A>
+	<LI><FONT COLOR="#FF0000">alpha 0.9 - sept 30</FONT>
+	<LI><A HREF="#alpha 0.8">alpha 0.8</A> - sept 29
+	<LI><FONT COLOR="#FF0000">alpha 0.5 - sept 25</FONT>
+	<LI><A HREF="#alpha 0.4 - Sept 25">alpha 0.4</A><FONT COLOR="#FF0000"> - sept 25</FONT>
+	<LI><A HREF="#alpha 0.3 - Sept 25">alpha 0.3</A><FONT COLOR="#FF0000"> - sept 25</FONT>
+	<LI><A HREF="#alpha 0.2 - Sept 22">alpha 0.2</A><FONT COLOR="#FF0000"> - sept 24</FONT>
+	<LI><A HREF="#alpha 0.1 - Sept 21">alpha 0.1</A><FONT COLOR="#FF0000"> - sept 21</FONT>
+</UL>
+
+<H2>
+<HR>
+</H2>
+<H2><A NAME="2.5a6.2a"></A>2.5a6.2a Dec 4</H2>
+
+<UL>
+	<LI><B>R_D</B> is updated to handle NULL in the following way:
+	<UL>
+		<LI>if the return value of any message route to D is NULL, a new R_D is returned
+		which points to NULL, instead of previously where simply NULL was returned to RSL.
+		RSL has no concept of NULL.
+		<LI>Foundation's C++ Resources support a method LogicalValue() which is called, for
+		example, when the object is evaluated in a boolean expression. R_D's c++ LogicalValue()
+		method returns the result of it's DRef's isValid() method, so the result of a method
+		call into D can be tested against NULL by an RSL if statement.
+	</UL>
+</UL>
+
+<H2><A NAME="2.5a6.2"></A>2.5a6.2 Dec 3</H2>
+
+<UL>
+	<LI><FONT COLOR="#006600"><B>No recompilation</B> since <B>2.5a6</B> is necessary</FONT>
+	<LI><FONT COLOR="#006600"><B>no rsl2D</B></FONT>
+	<LI><B>ECI_OStream</B> now correctly translates for String objects the control characters
+	'\n', '\t', '\r', '\\' into their respective escape sequences.
+	<LI><B>DO_Composite</B> gets three standard RSL methods via <CODE>route()</CODE>
+	only:
+	<UL>
+		<LI><FONT COLOR="#000077"><CODE>Bool contains(String objectName)</CODE></FONT> answers
+		the question: does this object contain an object named by <I>objectName</I>?
+		<LI><FONT COLOR="#000077"><CODE>Bool doesNotContain(String objectname)</CODE></FONT>
+		same as the above, only not
+		<LI><FONT COLOR="#000077"><CODE>addPrivate(String objectName, Object x)</CODE></FONT>
+		makes a <A HREF="advanced.html#Memory Management">secondary reference</A> to <I>x</I>,
+		named by <I>objectName</I>.
+	</UL>
+	<LI><B>patch #1 </B>(granitecore: rslEvents.cc): fix for <CODE>-&gt;</CODE> operator.
+	Symptom was that each line of code that used it, such as <FONT COLOR="#000077"><CODE>x
+	-&gt; f ( </CODE><I>args</I> <CODE>)</CODE></FONT> would work correctly <B>once</B>.
+	Problem was that this situation was invoking a never-before-seen condition in processing
+	the argument list <I>args</I> which recycled the objects that formed the program
+	code itself which defined the argument list <I>args</I>.
+	<LI><B>patch #2 </B>(granitecore:<B> </B>res_class.cc): superclass name determination
+	for D (native) classes has been corrected. Formerly, names of D classes from RSL's
+	perspective were &quot;Composite&quot;.
+	<LI><B>patch #3</B> (D: DECI_OStream.cc): check for valid Enumerator. caused a core
+	dump when streaming a DComposite object which had not initialized its KeyedCollection
+	implementation, where <FONT COLOR="#000077">DO_KeyedCollection::elements()</FONT>
+	returns DNULL.
+</UL>
+
+<H2><A NAME="2.5a6.1"></A>2.5a6.1 Nov 23</H2>
+
+<UL>
+	<LI><FONT COLOR="#006600"><B>no recompilation </B>since<B> 2.5a6 </B>necessary</FONT>
+	<LI><FONT COLOR="#006600"><B>no rsl2D re-generation</B> necessary</FONT>
+	<LI>rsl gets special message passing syntax via the <CODE>-&gt;</CODE> pseudo-operator.
+</UL>
+
+
+
+<BLOCKQUOTE>
+	
+  <P>A common problem in RSL is the desire to do the equivalent of in C++ or Java <CODE><font color="000077">a.b.c.m()</font></CODE>,
+	where <i>m</i> is a method of <I>c</I>, and <I>c</I> is an instance variable of object
+	<I>b</I>, and <I>b</I> is an instance variable of object <I>a</I>. But in rsl, &quot;.&quot;
+	is not an operator, ie, <FONT COLOR="#000077"><CODE>(</CODE></FONT><FONT COLOR="#330066"><I>expression</I></FONT><FONT
+	COLOR="#000077"><CODE>).m()</CODE></FONT> is illegal. Recently , the operator &quot;<CODE>/</CODE>&quot;
+	was introduced to allow repeated instance variable access, following URI syntax,
+	eg <FONT COLOR="#000077"><CODE>a / b / c</CODE></FONT> , but this still does not
+	allow the sending of a message to the object this expression evaluates to.</P>
+	<P>This version introduces the special operator <CODE>-&gt;</CODE> in an expression
+	of the form</P>
+
+	<BLOCKQUOTE>
+		<P><I>expr</I> <CODE>-&gt;</CODE> <I>messagename</I> <CODE>(</CODE> <I>arglist </I><CODE>)</CODE></P>
+
+	</BLOCKQUOTE>
+	<P>wher <I>expr</I> is any expression. The object that <I>expr</I> evaluates to gets
+	the message messagename(arglist). This entire expression is valid wherever expressions
+	are valid in RSL - that is, anywhere execpt around a &quot;.&quot;</P>
+	<P>For example,</P>
+
+	<UL>
+	<LI><FONT COLOR="#000077"><CODE>a / b / c -&gt; m( );</CODE></FONT>
+	<P><I>send the message </I>m<I> to </I>c<I> (inside </I>b<I> ( inside </I>a<I>) ).
+	In C++ syntax, this might look like </I><FONT COLOR="#000077"><CODE>a.b.c.m()</CODE></FONT><I>
+	or </I><FONT COLOR="#000077"><CODE>a.b.c-&gt;m()</CODE></FONT>
+	<LI><FONT COLOR="#000077"><CODE>f() -&gt; g();</CODE></FONT>
+	<P><I>the result of </I>f()<I> is sent the message </I>g<I>.</I>
+	<LI><FONT COLOR="#000077"><CODE>o.m(b/c -&gt; f() );</CODE></FONT>
+	<P><I>send the message </I>f<I> to the result of </I>(b/c)<I>, and send this result
+	as an argument of the message </I>m<I> to the object </I>o<I>.</I> <I>In C++ syntax,
+	this might look like</I> <FONT COLOR="#000077"><CODE>o.m(b.c.f())</CODE></FONT></P>
+	</UL>
+
+
+</BLOCKQUOTE>
+
+
+<UL>
+	<LI>Lastly, <A HREF="rsl2d.html">rsl2D</A> is updated to use this prototype version,
+	and
+	<LI><A HREF="rsl2d.html">autodoc</A> is introduced.
+</UL>
+
+<H2><A NAME="2.5a6"></A>2.5a6 Nov 23</H2>
+
+<UL>
+	<LI><FONT COLOR="#006600"><B>requires recompilation</B></FONT>
+	<LI><FONT COLOR="#006600"><B>does NOT require rsl2D regeneration.</B></FONT>
+	<LI>The function <FONT COLOR="#000077"><CODE>DO_ClassGroup::addClass(const DR_Class&amp;)</CODE></FONT>
+	allows Class objects to be added to the group. This greatly simplifies the D package
+	library structure since a DLibrary subclass along with its ugly create() switch/case
+	thing is not necessary. However, Library objects may still be added with old method
+	so existing libraries will work. see <A HREF="examples/packages/D_rsl/src/Dlib_def.html">this
+	example</A>.
+	<LI><FONT COLOR="#000077"><CODE>DRef DO_KeyedCollection::get(DR_String&amp;)</CODE></FONT>
+	is changed to <FONT COLOR="#000077">get(<B>const</B> DR_String&amp;)</FONT>
+	<LI>added <FONT COLOR="#000077"><CODE>RWCString DR_String::const_val() const;</CODE></FONT>
+	<LI>Basic methods added to D.rsl, implemented by <FONT COLOR="#000077"><CODE>DO_Object::route()</CODE></FONT>:
+	<UL>
+		<LI><CODE>:=</CODE> and <CODE>assign(Object)</CODE>
+		<LI><CODE>toString()</CODE>
+		<LI><CODE>toBoolean()</CODE>
+		<LI><CODE>route(Message)</CODE>
+		<LI><CODE>Class()</CODE>
+		<LI><CODE>dtypeid()</CODE>
+	</UL>
+</UL>
+
+<H2><A NAME="2.5a5.9"></A>2.5a5.9 Nov 17</H2>
+
+<UL>
+	<LI><FONT COLOR="#006600"><B>requires recompilation</B></FONT>
+	<LI><FONT COLOR="#006600"><B>does NOT require rsl2D regeneration.</B></FONT>
+	<LI>RSL syntax <I>object <B>.</B> variable</I> available for member access to DComposites.
+	Note that since &quot;.&quot; is not an operator in RSL, the slash is still preferable
+	since the object can override &quot;/&quot; to negotiate access, and multiple slashes
+	may be given as an expresion (ie <FONT COLOR="#000077"><TT>a/b/c/d</TT></FONT> ...)
+	<LI>new global comparative operators such as<BR>
+	<FONT COLOR="#000077"><TT>int operator&lt;(const DRef&amp; left, const DRef&amp;
+	right)</TT></FONT><BR>
+	resolve to <FONT COLOR="#000077"><TT>(left.compare(right) == c_less)</TT>;</FONT>
+	<LI>RSL method <CODE>localVarNames(</CODE>) of class Object, which returns a List
+	of the names of &quot;local&quot; variables. Available to both RSL classes and D
+	classes from within RSL.
+</UL>
+
+<H2><A NAME="2.5a5.8"></A>2.5a5.8 Nov 13</H2>
+
+<UL>
+	<LI>Reduced error output
+	<LI>Instances of pure RSL objects may be passed to D objects. They arrive simply
+	as instances of Composite, and may be accessed from D using get(), add(), etc.
+	<LI>Full support for standard RSL plumbing for D objects, such as the ability to
+	use a D Bool object in RSL <I>if</I> statements, etc. This means that R_D supports
+	as pass-throughs the following C++ Resource methods
+	<UL>
+		<LI><TT><CODE>isEqual()</CODE></TT> - using <TT><CODE>D::compare()</CODE></TT>
+		<LI><CODE>Assign()</CODE> - using <TT><CODE>D::assign()</CODE></TT>
+		<LI><CODE>LogicalValue()</CODE> - using <TT><CODE>D::toBoolean()</CODE></TT>
+		<LI><CODE>StrValue()</CODE> - using <CODE>D::toString()</CODE>
+		<LI><CODE>print() </CODE>- using ECI_OStream
+		<LI><CODE>rslprint()</CODE> - using <CODE>D::toString()</CODE>
+	</UL>
+	<LI>postOrder() and preOrder() methods added to BinaryTree, so a descending sort
+	can be done indirectly. a &quot;sortDescending&quot; interface will be added to List
+	in the next release.
+</UL>
+
+<H2><A NAME="2.5a5.5"></A>2.5a5.5</H2>
+
+<UL>
+	<LI>removed optimization (<TT>-fast</TT>).
+	<LI><A HREF="comparison.html">Sorting</A> with comparators and binary tree through
+	List -- but not available directly in RSL.
+	<LI>ECI_OStream <A HREF="Objects.html#Streaming">streams</A> objects correctly, with
+	the exception of strings that have embedded control characters.
+	<LI>introduction of
+	<UL>
+		<LI>BinaryTree
+		<LI>SortedBinaryTree
+		<LI>OStream
+		<UL>
+			<LI>ECI_OStream
+		</UL>
+	</UL>
+</UL>
+
+<H2><A NAME="2.5a5"></A><FONT COLOR="#DD0000">2.5a5</FONT></H2>
+<P>
+<H2><A NAME="2.5a4.9"></A><FONT COLOR="#DD0000">2.5a4.9</FONT> - Nov 9</H2>
+
+<UL>
+	<LI>Attempt to speed things up by:
+	<UL>
+		<LI>optimized compilation with <TT>-fast</TT>.
+		<LI>removing an fflush() call at the end of every write to the logfile!
+		<LI>removed
+	</UL>
+	<LI>test introduction of
+	<UL>
+		<LI>comparator
+	</UL>
+</UL>
+
+<H2><A NAME="2.5a4.8"></A><FONT COLOR="#FF0000">2.5a4.8</FONT> - Nov 4</H2>
+
+<UL>
+	<LI>Introduction of <A HREF="advanced.html">secondary references</A> to eliminate
+	the reference count cycle problem.
+	<LI>contains a bug: the location of librsl.so is hardcoded to a path outside the
+	release hierarchy. This is why it is deleted. (Russell has it on CD however)
+</UL>
+
+<H2><A NAME="2.5a4.5"></A><FONT COLOR="#FF0000">2.5a4.5</FONT> - Nov 2</H2>
+
+<UL>
+	<LI>First working version with full memory management in D!
+	<LI>contains a bug: location of librsl.so is hardcoded to a path outside the release
+	hierarchy. This is why it is deleted. (Russell has it on CD however)
+</UL>
+
+<H2><A NAME="2.5a4.01"></A><FONT COLOR="#FF0000">2.5a4.01</FONT></H2>
+<H2><A NAME="2.5a3"></A>2.5a3 - Oct 21</H2>
+
+<UL>
+	<LI><FONT COLOR="#006600"><B>This is the first official rsl2D version</B></FONT>
+	<LI>rsl2D is near-finalized. Only operators remain.
+	<LI>Composite working
+</UL>
+
+<H2><A NAME="2.5a2"></A><FONT COLOR="#FF0000">2.5a2</FONT> - Oct 14</H2>
+<H2><A NAME="2.5a1"></A>2.5a1 - Oct 13</H2>
+
+<UL>
+	<LI>Moved to /dest/applied/gf2.5
+	<LI>first release using new build structure
+</UL>
+
+<H2>
+<HR>
+</H2>
+<H2><A NAME="beta 1.0"></A>Oct 1</H2>
+
+<UL>
+	<LI>DClass and class objects for List, String, and Dictionary. Each class that uses
+	it needs the following (using T for the class name):
+	<UL>
+		<LI>each class defines a <TT>class DOC_T : public DO_Class</TT> <B>in the .cc file</B>
+		and implements <TT>private D*spawn()</TT> and <TT>public DR_T::New()</TT>.
+		<LI>DO_T defines a static DR_Class data member which is defined in the .cc file to
+		point to a new DOC_T object. It is named DO_T::Tclass
+		<LI>DO_T defines a method DRef DO_T::Class() overriding D::Class() to return the
+		object DO_T::Tclass
+	</UL>
+	<LI>DComposite shell (methods unimplemented)
+</UL>
+
+<P>
+<HR>
+<p></P>
+<H2><A NAME="alpha 0.9"></A>alpha 0.9 - sept 30</H2>
+
+<UL>
+	<LI><TT>const_get()</TT> introduced to DRef, String and other classes to avoid the
+	side effects of <TT>safe_get()</TT>. This will probably be rolled into the rsl2D
+	templates.
+	<LI>DClass and Drecycler introduced, but not used.
+</UL>
+
+<P>
+<HR>
+<p></P>
+<H2><A NAME="alpha 0.8"></A>alpha 0.8 - Sept 29</H2>
+
+<UL>
+	<LI>integration release, combined with R_D that does basic messaging for Strings.
+	In particular, in the foundation 2.5 beta, R_String is a DR_String !
+	<LI>DLibrary
+	<LI>DClassGroup
+</UL>
+
+<H2>
+<HR>
+<A NAME="alpha 0.5"></A>alpha 0.5 - Sept 25</H2>
+
+<UL>
+	<LI>Message classes completed. arguments stored in dictionary.
+</UL>
+
+<P>
+<HR>
+<p></P>
+<H2><A NAME="alpha 0.4 - Sept 25"></A>alpha 0.4 - Sept 25</H2>
+
+<UL>
+	<LI>Dictionary enumerator &amp; multiple add(), get() methods of Dictionary
+	<LI>unfinished work on Composite &amp; Context
+</UL>
+
+<H2>
+<HR>
+</H2>
+<H2><A NAME="alpha 0.3 - Sept 25"></A>alpha 0.3 - Sept 25</H2>
+
+<UL>
+	<LI>abstract KeyedCollection &amp; its Dictionary subclass
+</UL>
+
+<H2>
+<HR>
+<A NAME="alpha 0.2 - Sept 22"></A>alpha 0.2 - Sept 24</H2>
+
+<UL>
+	<LI>Solidified collection enumerator policy: every collection implements a DO_Enumerator
+	subclass but only a DR_Enumerator subclass for each distinct collection category
+	(that is, for each abstract DR_Collection subclass). For example, there is a DO_ListEnumerator
+	but no DR_ListEnumerator because the DR_Enumerator interface is sufficient for DO_ListEnumerator
+	(and it is a DO_Enumerator). But DR_KeyedContext exists and is used for every subclass
+	of DO_KeyedCollection.
+	<LI>message &amp; route() introduced
+</UL>
+
+<P>
+<HR>
+<p></P>
+<H2><A NAME="alpha 0.1 - Sept 21"></A>alpha 0.1 - Sept 21</H2>
+<P>Try it! This release exists as compiled into <B><TT>libD.so</TT></B> in <FONT
+COLOR="#0000DD"><TT><B>/dest/home/holtrf/dev/packages/Releases/D/D-0.1</B></TT></FONT></P>
+<P>To use it, you need both the headers and the shared lib. Try using it with one
+of these two ways, (but whatever you do, don't just copy it):</P>
+
+
+<BLOCKQUOTE>
+	<P>A. Add the directory to your LD_LIBRARY_PATH for libD.so, and add <TT>-I/dest/home/holtrf/dev/packages/Releases/D/D-0.1</TT>
+	to the compile flags in your makefile. Also add a <TT>-L/dest/home/holtrf/</TT>...
+	to the link line.</P>
+
+</BLOCKQUOTE>
+
+<P><B>OR</B></P>
+
+
+<BLOCKQUOTE>
+	<P>B. make sure &quot;.&quot; is in your LD_LIBRARY_PATH, as it probably should be,
+	and ln -s <TT>/dest/home/holtrf/dev/packages/Releases/D/D-0.1/libD.so</TT>. Also
+	add the <TT>-I</TT> as described in A. above, but add <TT>-L.</TT> to the link line.
+	(that's a -L followed by dot, the same as <TT>-L$(PWD)</TT> ).</P>
+
+</BLOCKQUOTE>
+
+<P><FONT COLOR="#DD0000"><B>Note!</B></FONT> For the gnu compiler, you must compile
+and link whatever executables you use with <B><TT>-frtti</TT></B>. For regular C++
+programs, follow the model set out in the makefile.</P>
+<H4>What's available</H4>
+<P>For basic examples, start at dtestmain.cc in the directory above. Also, look at
+DString.h, DList.h. This is a real basic set of stuff, mostly infrastructure and
+superclasses.</P>
+
+<UL>
+	<LI>the basis for reference and object interaction
+	<LI>collections &amp; collection enumeration
+</UL>
+
+<H4>What's not available &amp; when</H4>
+
+<UL>
+	<LI>Composites -- by tomorrow
+	<LI>message passing -- wednesday
+	<LI>class objects -- wednesday (and by extension, recycling)
+	<LI>R_D - wednesday or thursday
+</UL>
+
+<P>
+<CENTER>
+<P>
+<HR>
+<A HREF="DestinyC++.html"><FONT SIZE="2">Destiny C++</FONT></A><B> </B>| <A HREF="Overview.html"><FONT
+SIZE="2">Overview</FONT></A><B><BR>
+</B><A HREF="Objects.html"><FONT SIZE="2">Class and Object Design</FONT></A><B> </B>|<B>
+</B><A HREF="rsl2d.html"><FONT SIZE="2">rsl2D</FONT></A><B> </B>|<B> </B><A HREF="R_D.html"><FONT
+SIZE="2">R_D</FONT></A> | <A HREF="Dfaq.html"><FONT SIZE="2">Martin's Questions</FONT></A>
+</CENTER>
+
+
+</BODY>
+
+</HTML>

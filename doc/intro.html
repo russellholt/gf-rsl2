@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>D</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../russell.css" type="text/css">
+<style type="text/css">
+<!--
+h1 {  border-color: black black #000000; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 2px; border-left-width: 0px}
+-->
+</style>
+</head>
+
+<body bgcolor="#CCCCCC" text="#000000">
+
+<p style="font-family:sans-serif; font-weight:bold;"><a href="../../index.html">Russell</a> > <a href="../index.html">Software</a> > D</p>
+
+<table width="90%" border="0" cellspacing="0" cellpadding="5" align="center" bgcolor="#FFFFFF">
+  <tr bgcolor="#FFFFFF">
+    <td valign="top" bgcolor="#CCCCCC">&nbsp;
+	
+	
+      </td>
+    <td valign="top">
+      <h1>D</h1>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#CCCCCC">&nbsp;</td>
+    <td>
+	
+	  <p class="overview">D is a C++  object model that offers advanced features only found in dynamic languages such as message passing, virtual data, object serialization, memory management. It does not extend or pre-process C++, in the way that Objective-C extends C,  (although it could in the future), but rather acts a class library and C++ coding standard.
+	
+	</p>
+      <h2>The problem</h2>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#CCCCCC"><a href="D_docs/DestinyC%2B%2BProblemDetails.html">problem details</a></td>
+    <td>
+      
+      <p>D was written to allow a complex C++ object model to be used seamlessly from within Destiny's Granite Foundation 2.5 application server and object-oriented dynamic language <a href="../rsl/rsl.html">RSL 2.</a> Classes in RSL may be implemented in pure RSL, pure C++, or a mix of both. Often the RSL layer acts as a interface to the &quot;real work&quot; which was written in efficient C++. But C++ isn't dynamic: there is no message passing. Thus, to expose a C++ class in the RSL layer, glue code had to be written to recieve RSL messages and call the corresponding C++ member functions, marshalling data back and forth. Complicated. and tied to Granite Foundation and RSL as well.</p>
+      <p>The basic requirements for D were thus 1) make it easier to create C++ for Granite Foundation,  2) allow that C++ to be independent of Granite Foundation and RSL so it can be used elsewhere, and 3) allow the C++ classes to have as complex a class hierarchy as needed.</p>
+      <h2>The solution</h2>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#CCCCCC">See<br>
+	<a href="D_docs/DestinyC%2B%2B.html">Destiny documentation</a>
+<a href="D_docs/DestinyC%2B%2BProblemDetails.html"></a> (note: although D is independent of Granite Foundation, this documentation is for GF developers)</td>
+    <td>
+      <p>Primarily I needed either an abstract messaging system for C++  to get RSL messages into D C++ classes, or I needed a code generator to automatically curn out the C++ glue code. But then I still needed to be able to serialize these objects in Granite Foundation's message format, which would still result in significant custom C++ code for data  marshalling. To do that automatically requires deep magic, considering the low level nature of C and C++.</p>
+      <p>The two main design goals were thus 1) support for dynamic message routing and 2) the ability to access the C++ object  data members from within RSL. #2 implies automatic object serialization and reconstruction. Dynamic messaging can be thought of as each D C++ class supporting a member function like route(Message m) which would switch on some kind of Message identifier and invoke the corresponding member function. But one key question is how does the system know that this object supports that function (or in dynamic-speak, responds to that message) ? Well, there has to be an abstract class definition that the system can query.. and you can see where this is going. So then allowing dynamic access to an object's data members implies a kind of table lookup...</p>
+      <h3>Class Hierarchies, References, Memory</h3>
+    </td>
+  </tr>
+  
+  <tr valign="top">
+    <td bgcolor="#CCCCCC">
+      <p>See</p>
+      <p><a href="D_docs/Objects.html">Class and Object Design</a></p>
+      <p> <a href="D_docs/dReference.html">D&nbsp;Class&nbsp;Reference</a> (automatically generated)</p>
+    </td>
+    <td>
+      <p>The most interesting thing about the design of D (in my mind) is that there are actually several parallel C++ class hierarchies - one for strongly typed reference classes (smart pointers), one for implementation classes, and others. A &quot;String&quot;, for instance, is composed of two C++ classes - an implementation class and a reference class: the reference contains a pointer to the implementation, and these occupy analogous places in the hierarchy of references and the hierarchy of implementation classes. </p>
+      <p>DR_ prefixes the reference class names, and DO_ prefixes the implementation class names. the DR_ classes forward messages to the DO_ classes, and manage the reference counts of DO_ objects. This allows DR_ objects to be allocated on the stack - for example a local String can be merely declared as a DR_String, (which points to a DO_String) and the DR_String destructor will decrement the ref count of the DO_String it points to. DRef is the top of the DR_ hierarchy, and is the generic pointer type. The more specific reference types (eg DR_String) 1) create the corresponding DO_ type, and 2)  dereference via C++'s <code>dynamic_cast</code>.</p>
+      <p>Collection classes add a third and fourth hierarchies - enumerators. Naturally, consistency requires that there are also references to enumerator implementations as well!  This presents a diagramming problem. UML object model diagrams are far too often taken literally although abstract relationships among the concepts in the model are what is important. Uniting the separate but parallel entities like the various components that make up a String would obfuscate the reality rather than showing the details. After much wrangling with how to best show it, I decided to make up my own diagram style, for better or worse.</p>
+      <h2>Features</h2>
+    </td>
+  </tr>
+  <tr valign="top">
+    <td bgcolor="#CCCCCC">&nbsp;</td>
+    <td>
+      <p><b>Dynamic messaging</b> - messages are objects interpreted at runtime. Allows, for example, proxy objects that resend messages</p>
+      <p><b>virtual data</b> - the type of an inherited instance variable can be &quot;seamlessly&quot; redefined by subclasses or declared by a superclass to merely exist and be of an undefined type</p>
+      <p><b>pure polymorphism</b> - objects know their actual type</p>
+      <p><b>abstract composite objects</b> - are subclasses of Composite, which implements "has-a" relationships with a table of references to its instance variables. </p>
+      <p><b>memory management</b> - objects are reference counted and recycled. Reference circularity is solved by the differentiation of &quot;primary&quot; and &quot;secondary&quot; references. Back pointers are an example of the  secondary references - those that shouldn't influence recycling.</p>
+      <p><b>smart pointers</b> - discussed above</p>
+      <p><b>Object serialization</b> - &quot;streaming&quot; all D objects can be serialized and reconstructed in a variety of different formats. </p>
+      <h2>Did it work?</h2>
+      </td>
+  </tr>
+  <tr valign="top">
+    <td bgcolor="#CCCCCC" valign="middle">I like this <a href="D_docs/h-d.html">header dependency graph</a> and wish more libraries came with one..</td>
+    <td>
+      <p>Yes, it worked. The reference counting and object recycling works well, the code generator  was good, and a lot of its features are great. It's complex, that's true. It was put to the official test in a very large online wealth management system and it worked. There were no known bugs at the end.  As I had done several times before at Destiny, it was built during the project because it was needed, so there was a lot of pressure to get it done quickly and make it actually work.   I think there is still some interesting work remaining to be done in the area of &quot;parallel&quot; class hierarchies, or the idea that a design class need not be implemented by a single class, but can be a crowd of interacting objects. That kind of approach can offer real flexibility so that design need not be limited by implementation.</p>
+
+      <h2>Can I download it?</h2>
+    </td>
+  </tr>
+  <tr valign="top">
+    <td bgcolor="#CCCCCC">&nbsp;</td>
+    <td>
+      <p>Not yet, but I'm working on that.</p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
